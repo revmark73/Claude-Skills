@@ -1,0 +1,7 @@
+# Byte-compiled files, mostly left behind by scripts/check-skills.py
+# importing the skills' bundled Python modules.
+__pycache__/
+*.py[cod]
+
+# Scratch output from smoke tests and skill runs
+*.tmp
