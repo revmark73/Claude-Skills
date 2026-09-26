@@ -31,15 +31,15 @@ Files sit on `d8j0ntlcm91z4.cloudfront.net`. The first session could not downloa
 5. Rebuild the hero as a scroll-driven film (video plays forward on scroll down, backward on scroll up) with the captions above, settling into the current headline, Monday note, and readouts. Phones and reduced motion get the end still. Add scroll movement to the new stills in lower sections.
 6. Publish the artifact with the video and images passed through `files`, commit, and push.
 
-## Update: final Higgsfield set (40.25 credits spent in total)
+## Update: final Higgsfield set (50.75 credits spent in total)
 | Piece | Job id | Use |
 |---|---|---|
-| Film, heartbeat to cross | 1d2aa6ed-74fe-4ce5-90ef-17bc304620f4 | assets/hero.mp4 |
+| Film, seven lines merge to one heartbeat then a cross | b1e01aa8-6de4-407b-81d7-9a6fd41fb5f3 | assets/hero.mp4 |
 | Cross end frame | e7db629d-f352-48eb-a1e5-9a58492474ad | reference only |
 | Desk still | 70c7d14d-a5e2-4cec-a424-03e528b73170 | assets/still-desk.jpg |
 | Seven lines still | 15a9f4cd-823d-46bb-8436-8dcf54b91a20 | assets/still-lines.jpg |
 | Modern town church still | 055e32a7-4de7-44ad-bc73-d87283c2aee5 | assets/still-church.jpg |
 
-Superseded, do not use: heart film a7481933-d28e-4e03-8ec5-c069e5a0cb7c, heart end frame bdccd636, country church 58ae0d8c.
+Superseded, do not use: single-line cross film 1d2aa6ed-74fe-4ce5-90ef-17bc304620f4, heart film a7481933-d28e-4e03-8ec5-c069e5a0cb7c, heart end frame bdccd636, country church 58ae0d8c.
 
 The page code for the scroll film and parallax stills is already in index.html and expects the files named in the Use column. Since cloudfront.net stays blocked, Mark uploads the downloads to vitals-landing/assets on this branch through github.com. Then: pull, run the ffmpeg prep (scrub encode with keyframe every 4 frames, start and end jpg stills from the video, stills to 1920 wide jpg), inspect every file, publish with files, commit, push.
