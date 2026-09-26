@@ -157,7 +157,7 @@ p{margin:0}
 
 /* Film: scroll-driven hero */
 .film{position:relative;background:#0A1316;color:#EAF1EF}
-.film.is-scrub{height:620vh}
+.film.is-scrub{height:1000vh}
 .film-stage{position:relative;height:min(88vh,860px);min-height:520px;overflow:hidden}
 .film.is-scrub .film-stage{position:sticky;top:0;height:100vh}
 .film-poster,.film-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .6s ease}
@@ -933,7 +933,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     }
   }
   function loop(){
-    shown += (target - shown) * 0.08;
+    shown += (target - shown) * 0.06;
     if (Math.abs(target - shown) < 0.004) shown = target;
     if (dur && !video.seeking && Math.abs(video.currentTime - shown) > 0.016) video.currentTime = shown;
     if (shown !== target || video.seeking){ requestAnimationFrame(loop); } else { running = false; }
