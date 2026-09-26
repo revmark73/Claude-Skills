@@ -43,3 +43,6 @@ Files sit on `d8j0ntlcm91z4.cloudfront.net`. The first session could not downloa
 Superseded, do not use: single-line cross film 1d2aa6ed-74fe-4ce5-90ef-17bc304620f4, heart film a7481933-d28e-4e03-8ec5-c069e5a0cb7c, heart end frame bdccd636, country church 58ae0d8c.
 
 The page code for the scroll film and parallax stills is already in index.html and expects the files named in the Use column. Since cloudfront.net stays blocked, Mark uploads the downloads to vitals-landing/assets on this branch through github.com. Then: pull, run the ffmpeg prep (scrub encode with keyframe every 4 frames, start and end jpg stills from the video, stills to 1920 wide jpg), inspect every file, publish with files, commit, push.
+
+## Done 2026-09-26
+Assets processed into vitals-landing/assets (hero.mp4 H.264 and hero.webm VP9 fallback, both with a keyframe every 4 frames; start and end stills; three section stills at 1920 wide). Raw uploads moved to vitals-review/ (git-ignored). Page published as version 6 of the artifact with all assets passed through `files`.

@@ -360,15 +360,15 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   <section class="film" id="film" aria-label="Vitals">
     <div class="film-stage">
       <img class="film-poster" id="filmPoster" src="assets/hero-end.jpg" data-start="assets/hero-start.jpg" alt="" onerror="this.remove()">
-      <video id="filmVideo" class="film-media" data-src="assets/hero.mp4" muted playsinline preload="none" aria-hidden="true"></video>
+      <video id="filmVideo" class="film-media" data-src="assets/hero.mp4" data-src-webm="assets/hero.webm" muted playsinline preload="auto" aria-hidden="true"></video>
       <div class="film-vignette" aria-hidden="true"></div>
       <div class="film-band" data-from="0.03" data-to="0.24" aria-hidden="true"><p>Sunday ends.</p></div>
       <div class="film-band" data-from="0.30" data-to="0.52" aria-hidden="true"><p>Monday is already waiting.</p></div>
       <div class="film-band" data-from="0.58" data-to="0.78" aria-hidden="true"><p>Vitals keeps the heartbeat steady.</p></div>
       <div class="film-settle" id="filmSettle">
         <div>
-          <span class="eyebrow">Your Monday morning</span>
-          <h2 class="big">Monday, <em>already handled.</em></h2>
+          <span class="eyebrow">Church software for Assemblies of God pastors</span>
+          <h1>The work that happens <em>after Sunday.</em></h1>
         </div>
         <div class="actions">
           <a class="btn" href="#pricing">Try it for a month</a>
@@ -940,10 +940,15 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   onScroll();
 
   video.addEventListener("error", staticHero);
-  fetch(video.dataset.src)
+  var mp4ok = video.canPlayType('video/mp4; codecs="avc1.42E01E"');
+  var webmok = video.canPlayType('video/webm; codecs="vp9"');
+  var srcUrl = mp4ok ? video.dataset.src : (webmok ? video.dataset.srcWebm : null);
+  if (!srcUrl) { staticHero(); return; }
+  fetch(srcUrl)
     .then(function(r){ if (!r.ok) throw new Error(r.status); return r.blob(); })
     .then(function(blob){
       video.src = URL.createObjectURL(blob);
+      video.load();
       return new Promise(function(res, rej){
         video.addEventListener("loadeddata", res, { once: true });
         video.addEventListener("error", rej, { once: true });
