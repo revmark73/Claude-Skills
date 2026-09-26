@@ -125,6 +125,11 @@ p{margin:0}
 .hero h1 em{font-style:normal;color:var(--accent)}
 .hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
 .hero .fine{margin-top:16px;font-size:.95rem;color:var(--ink-soft)}
+.hours{display:flex;align-items:center;gap:16px;margin-top:26px;padding:14px 18px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;background:var(--surface);max-width:30em}
+.hours .n{font-family:var(--display);font-weight:900;font-size:2.4rem;letter-spacing:-.03em;line-height:1;color:var(--accent);white-space:nowrap;font-variant-numeric:tabular-nums}
+.hours .t{font-family:var(--display);font-size:.98rem;line-height:1.35}
+.hours .t small{display:block;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:4px}
+@media (max-width:420px){.hours{flex-direction:column;align-items:flex-start;gap:6px}}
 @media (max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:40px;padding-block:48px 32px}}
 
 .trace-band{position:relative;height:110px;margin-top:8px}
@@ -301,6 +306,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
         <span class="eyebrow">Church software for Assemblies of God pastors</span>
         <h1>The work that happens <em>after Sunday.</em></h1>
         <p class="lede">Sunday ends, and before you have rested there is a recap to write, a guest to call, a family in the hospital, and a sermon for next week that is still a blank page. Vitals carries the part of that load a machine can carry, so you have more of yourself for the part only you can do.</p>
+        <div class="hours">
+          <span class="n">8 to 10</span>
+          <span class="t">hours a week back in your hands. That is what Vitals is built to give you.<small>Estimated time saved per pastor</small></span>
+        </div>
         <div class="actions">
           <a class="btn" href="#pricing">Try it for a month</a>
           <a class="btn ghost" href="#week">See your week in Vitals</a>
@@ -586,7 +595,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
       <div class="price-notes">
         <div><b>DCA church?</b> You get 20% off your plan. If your district has a Vitals contract, your district covers it.</div>
-        <div id="try"><b>Try it for a month on your own church.</b> If it does not give you back real hours in your week, cancel before the second month and you are out one month's fee.</div>
+        <div id="try"><b>Try it for a month on your own church.</b> Vitals is built to give you back 8 to 10 hours a week. If it does not give you back real hours, cancel before the second month and you are out one month's fee.</div>
       </div>
     </div>
   </section>
