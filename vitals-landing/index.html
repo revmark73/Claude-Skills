@@ -1,0 +1,695 @@
+<title>Vitals for Pastors</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Schibsted+Grotesk:wght@500;700;800;900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+:root{
+  --ground:#F3F5F4;
+  --surface:#FFFFFF;
+  --ink:#15232A;
+  --ink-soft:#4C5B61;
+  --line:#D5DCDA;
+  --accent:#C21F3A;
+  --accent-ink:#FFFFFF;
+  --teal:#28565B;
+  --grid:rgba(194,31,58,.10);
+  --grid-major:rgba(194,31,58,.20);
+  --monitor:#0E1A1D;
+  --monitor-ink:#D9E6E3;
+  --monitor-dim:#7E9894;
+  --monitor-trace:#5FE3B0;
+  --shadow:0 1px 2px rgba(21,35,42,.06),0 12px 32px rgba(21,35,42,.08);
+  --display:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --ground:#0F171A;
+    --surface:#172226;
+    --ink:#E6ECEA;
+    --ink-soft:#A3B2B0;
+    --line:#2A383C;
+    --accent:#F05A70;
+    --accent-ink:#1A0A0D;
+    --teal:#7CC0C2;
+    --grid:rgba(240,90,112,.07);
+    --grid-major:rgba(240,90,112,.14);
+    --monitor:#081013;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 32px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#0F171A;
+  --surface:#172226;
+  --ink:#E6ECEA;
+  --ink-soft:#A3B2B0;
+  --line:#2A383C;
+  --accent:#F05A70;
+  --accent-ink:#1A0A0D;
+  --teal:#7CC0C2;
+  --grid:rgba(240,90,112,.07);
+  --grid-major:rgba(240,90,112,.14);
+  --monitor:#081013;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 32px rgba(0,0,0,.35);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:18px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1160px;margin-inline:auto;padding-inline:24px}
+@media (max-width:520px){.wrap{padding-inline:16px}body{font-size:17px}}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.02em}
+h2{font-size:clamp(2rem,4.4vw,3.2rem);font-weight:800}
+h3{font-size:1.25rem;font-weight:700;letter-spacing:-.01em}
+p{margin:0}
+.eyebrow{
+  font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);display:inline-flex;align-items:center;gap:.6em;
+}
+.eyebrow::before{content:"";width:18px;height:2px;background:currentColor}
+.lede{font-size:1.2rem;color:var(--ink-soft);max-width:36em}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5em;
+  font-family:var(--display);font-weight:700;font-size:1rem;text-decoration:none;
+  padding:.85em 1.4em;border-radius:6px;border:2px solid var(--accent);
+  background:var(--accent);color:var(--accent-ink);cursor:pointer;
+  transition:transform .15s ease,box-shadow .15s ease;
+}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(194,31,58,.25)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--ink);box-shadow:none}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+
+/* Nav */
+.nav{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
+  background:color-mix(in srgb,var(--ground) 88%,transparent);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:900;font-size:1.45rem;text-decoration:none;letter-spacing:-.03em}
+.brand svg{width:34px;height:20px;flex:none}
+.brand .dot{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:26px;font-family:var(--display);font-weight:500;font-size:.95rem}
+.nav-links a{text-decoration:none;color:var(--ink-soft)}
+.nav-links a:hover{color:var(--ink)}
+.nav .btn{padding:.6em 1.1em;font-size:.92rem}
+@media (max-width:860px){.nav-links a:not(.btn){display:none}}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.ecg-paper{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(var(--grid-major) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid-major) 1px,transparent 1px),
+    linear-gradient(var(--grid) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:100px 100px,100px 100px,20px 20px,20px 20px;
+  mask-image:linear-gradient(180deg,rgba(0,0,0,.9),rgba(0,0,0,.35));
+  -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.9),rgba(0,0,0,.35));
+}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding-block:72px 40px}
+.hero h1{font-size:clamp(2.8rem,6.6vw,5.4rem);font-weight:900;letter-spacing:-.035em;margin-block:18px 22px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero .fine{margin-top:16px;font-size:.95rem;color:var(--ink-soft)}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:40px;padding-block:48px 32px}}
+
+.trace-band{position:relative;height:110px;margin-top:8px}
+.trace-band svg{position:absolute;inset:0;width:100%;height:100%}
+.trace-band .trace{fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
+.trace-band .sweep{fill:none;stroke:var(--ground);stroke-width:8;opacity:.9}
+@media (prefers-reduced-motion:reduce){.trace-band .sweep{display:none}}
+
+/* Monday note mock */
+.note{
+  background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);
+  font-family:var(--display);overflow:hidden;
+}
+.note-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.note-head strong{font-size:1.05rem}
+.note-head span{font-family:var(--mono);font-size:.72rem;color:var(--ink-soft);letter-spacing:.06em}
+.note-sec{padding:14px 20px;border-bottom:1px solid var(--line)}
+.note-sec:last-child{border-bottom:0}
+.note-sec h4{margin:0 0 8px;font-family:var(--mono);font-weight:500;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.note-row{display:flex;justify-content:space-between;gap:12px;font-size:.95rem;padding-block:4px}
+.note-row b{font-weight:700}
+.note-row .tag{font-family:var(--mono);font-size:.72rem;padding:2px 8px;border-radius:99px;white-space:nowrap;align-self:center}
+.tag.due{background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}
+.tag.quiet{background:color-mix(in srgb,var(--teal) 16%,transparent);color:var(--teal)}
+.tag.ok{background:color-mix(in srgb,var(--ink) 8%,transparent);color:var(--ink-soft)}
+.note-foot{padding:10px 20px;font-family:var(--mono);font-size:.7rem;color:var(--ink-soft);background:color-mix(in srgb,var(--ground) 60%,var(--surface))}
+
+/* AG strip */
+.ag{padding-block:64px;border-bottom:1px solid var(--line)}
+.ag .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
+.ag p.lede{margin-top:16px}
+.cal{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface)}
+.cal div{padding:16px 14px;border-right:1px solid var(--line);font-family:var(--display)}
+.cal div:last-child{border-right:0}
+.cal small{display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.cal strong{font-size:1rem;line-height:1.2;display:block}
+@media (max-width:900px){.ag .wrap{grid-template-columns:1fr}}
+@media (max-width:640px){.cal{grid-template-columns:1fr 1fr}.cal div{border-bottom:1px solid var(--line)}.cal div:nth-child(2n){border-right:0}.cal div:last-child{grid-column:1/-1;border-bottom:0}}
+
+/* Week */
+.section{padding-block:88px}
+.section-head{display:grid;gap:16px;max-width:760px;margin-bottom:48px}
+.week{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--ink)}
+.day{padding:22px 22px 0 0}
+.day + .day{padding-left:22px;border-left:1px solid var(--line)}
+.day .when{font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.day h3{margin-bottom:10px}
+.day p{color:var(--ink-soft);font-size:1rem}
+@media (max-width:900px){.week{grid-template-columns:1fr 1fr;row-gap:28px}.day:nth-child(3){padding-left:0;border-left:0}}
+@media (max-width:560px){.week{grid-template-columns:1fr}.day,.day + .day{padding-left:0;border-left:0}}
+
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:64px}
+.feat{background:var(--surface);padding:28px}
+.feat h3{margin-bottom:10px}
+.feat p{font-size:1rem;color:var(--ink-soft)}
+@media (max-width:900px){.features{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.features{grid-template-columns:1fr}}
+
+/* Monitor */
+.monitor-sec{background:var(--monitor);color:var(--monitor-ink);padding-block:88px}
+.monitor-sec h2{color:#F4F8F7}
+.monitor-sec .eyebrow{color:var(--monitor-trace)}
+.monitor-sec .lede{color:var(--monitor-dim)}
+.screen{margin-top:44px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#1D2C30;border:1px solid #1D2C30;border-radius:10px;overflow:hidden}
+.inst{background:var(--monitor);padding:22px 20px 20px;display:flex;flex-direction:column;gap:10px;min-height:180px}
+.inst .top{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--monitor-dim)}
+.inst .name{font-family:var(--display);font-weight:800;font-size:1.6rem;letter-spacing:-.02em;color:#F4F8F7}
+.inst .what{font-size:.98rem;color:var(--monitor-dim);line-height:1.45}
+.inst .read{margin-top:auto;display:flex;align-items:flex-end;gap:12px}
+.inst .num{font-family:var(--mono);font-size:1.9rem;line-height:1;color:var(--monitor-trace);font-variant-numeric:tabular-nums}
+.inst .num.low{color:#FFB35C}
+.inst svg{flex:1;height:30px}
+.inst svg path{fill:none;stroke:var(--monitor-trace);stroke-width:1.6;opacity:.8}
+.inst .num.low + svg path{stroke:#FFB35C}
+.inst.legend{justify-content:center;background:#10201F}
+.inst.legend p{font-size:.95rem;color:var(--monitor-dim)}
+.inst.legend b{color:#F4F8F7;font-family:var(--display)}
+.sample{margin-top:14px;font-family:var(--mono);font-size:.72rem;color:var(--monitor-dim);letter-spacing:.06em}
+@media (max-width:900px){.screen{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.screen{grid-template-columns:1fr}.inst{min-height:0}}
+
+/* EKG private */
+.ekg{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.ekg .quote{font-size:1.35rem;line-height:1.5;border-left:3px solid var(--accent);padding-left:22px}
+.ekg .ladder{margin-top:28px;display:grid;gap:10px}
+.ladder div{display:flex;gap:14px;align-items:baseline;font-family:var(--display);font-size:1rem;padding:12px 16px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+.ladder span{font-family:var(--mono);font-size:.72rem;color:var(--accent);letter-spacing:.1em}
+@media (max-width:900px){.ekg{grid-template-columns:1fr;gap:32px}}
+
+/* Ask */
+.ask{background:var(--surface);border-block:1px solid var(--line)}
+.ask-box{margin-top:36px;max-width:780px;border:1px solid var(--line);border-radius:10px;background:var(--ground);overflow:hidden}
+.ask-input{display:flex;gap:10px;padding:14px;border-bottom:1px solid var(--line);background:var(--surface)}
+.ask-input input{flex:1;min-width:0;font:inherit;font-family:var(--display);font-size:1.05rem;padding:.6em .8em;border:1px solid var(--line);border-radius:6px;background:var(--ground);color:var(--ink)}
+.ask-input .btn{padding:.6em 1.1em}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:14px 14px 0}
+.chip{font-family:var(--display);font-size:.9rem;padding:.45em .9em;border-radius:99px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.chip:hover,.chip[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
+.answer{padding:18px 18px 20px;font-family:var(--display);font-size:1rem}
+.answer .label{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px}
+.answer ul{margin:8px 0 0;padding-left:1.1em}
+.answer li{margin-block:4px}
+.answer a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}
+
+/* Coaching */
+.coach{display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:center}
+.coach-card{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:28px;box-shadow:var(--shadow)}
+.coach-card .big{font-family:var(--display);font-weight:900;font-size:3.4rem;letter-spacing:-.04em;line-height:1}
+.coach-card .big s{color:var(--ink-soft);font-weight:700;font-size:1.6rem;text-decoration-thickness:2px;margin-right:10px}
+.coach-card p{margin-top:12px;color:var(--ink-soft);font-size:1rem}
+@media (max-width:900px){.coach{grid-template-columns:1fr;gap:32px}}
+
+/* Pricing */
+.pricing{background:color-mix(in srgb,var(--teal) 6%,var(--ground));border-top:1px solid var(--line)}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:8px}
+.tier{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:28px;display:flex;flex-direction:column;gap:18px}
+.tier.mid{border-color:var(--ink);border-width:2px}
+.tier .size{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.tier h3{font-size:1.5rem}
+.price{font-family:var(--display);font-weight:900;font-size:3rem;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.price small{font-size:1rem;font-weight:500;letter-spacing:0;color:var(--ink-soft)}
+.yearly{font-family:var(--display);font-size:.95rem;color:var(--ink-soft);margin-top:6px}
+.tier dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:8px 12px;font-family:var(--display);font-size:.95rem;border-top:1px solid var(--line);padding-top:16px}
+.tier dt{color:var(--ink-soft)}
+.tier dd{margin:0;font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.tier .btn{margin-top:auto}
+.price-notes{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.price-notes div{font-size:1rem;color:var(--ink-soft);padding:18px 20px;border:1px dashed var(--line);border-radius:10px}
+.price-notes b{color:var(--ink);font-family:var(--display)}
+@media (max-width:900px){.tiers{grid-template-columns:1fr}.price-notes{grid-template-columns:1fr}}
+
+/* District */
+.district{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.district .facts{display:grid;gap:0;border-top:2px solid var(--ink)}
+.district .fact{display:grid;grid-template-columns:120px 1fr;gap:16px;padding-block:16px;border-bottom:1px solid var(--line)}
+.fact .k{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);padding-top:3px}
+.fact .v{font-size:1rem}
+@media (max-width:900px){.district{grid-template-columns:1fr;gap:32px}}
+@media (max-width:480px){.district .fact{grid-template-columns:1fr;gap:4px}}
+
+/* Letter */
+.letter{border-top:1px solid var(--line);padding-block:88px}
+.letter .inner{max-width:680px;margin-inline:auto}
+.letter p{font-size:1.2rem;margin-bottom:1.1em}
+.letter .sig{font-family:var(--display);font-weight:800;font-size:1.3rem;margin-top:28px}
+.letter .sig span{display:block;font-family:var(--mono);font-weight:400;font-size:.78rem;color:var(--ink-soft);letter-spacing:.06em;margin-top:4px}
+.letter .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+
+footer{border-top:1px solid var(--line);padding-block:28px;font-family:var(--display);font-size:.9rem;color:var(--ink-soft)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+</style>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Vitals home">
+      <svg viewBox="0 0 34 20" aria-hidden="true"><path d="M1 11h8l3-7 5 14 4-9 2 2h10" fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Vitals<span class="dot">.</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#week">Your week</a>
+      <a href="#health">Church health</a>
+      <a href="#coaching">Coaching</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#districts">Districts</a>
+      <a class="btn" href="#pricing">Try a month</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="ecg-paper" aria-hidden="true"></div>
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Church software for Assemblies of God pastors</span>
+        <h1>The work that happens <em>after Sunday.</em></h1>
+        <p class="lede">Sunday ends, and before you have rested there is a recap to write, a guest to call, a family in the hospital, and a sermon for next week that is still a blank page. Vitals carries the part of that load a machine can carry, so you have more of yourself for the part only you can do.</p>
+        <div class="actions">
+          <a class="btn" href="#pricing">Try it for a month</a>
+          <a class="btn ghost" href="#week">See your week in Vitals</a>
+        </div>
+        <p class="fine">Built by a pastor and written in your voice. Nothing goes out until you approve it.</p>
+      </div>
+
+      <aside class="note" aria-label="Example Monday note">
+        <div class="note-head">
+          <strong>Your Monday note</strong>
+          <span>MON 7:00 AM</span>
+        </div>
+        <div class="note-sec">
+          <h4>Who needs a call</h4>
+          <div class="note-row"><span><b>The Alvarez family</b>, hospital stay ended Friday</span><span class="tag due">Call today</span></div>
+          <div class="note-row"><span><b>Ruth Ellison</b>, two weeks since her husband's funeral</span><span class="tag due">Note drafted</span></div>
+        </div>
+        <div class="note-sec">
+          <h4>Guests gone quiet</h4>
+          <div class="note-row"><span><b>Jordan and Kaylee Price</b>, first visit Aug 31</span><span class="tag quiet">No 2nd contact</span></div>
+        </div>
+        <div class="note-sec">
+          <h4>Waiting on you</h4>
+          <div class="note-row"><span>Sunday recap email, ready to review</span><span class="tag ok">Draft</span></div>
+          <div class="note-row"><span>Board agenda for Thursday</span><span class="tag ok">1 item open</span></div>
+          <div class="note-row"><span>Coaching action step: plan the fall series</span><span class="tag ok">From Sept call</span></div>
+        </div>
+        <div class="note-foot">Example note. Names are made up.</div>
+      </aside>
+    </div>
+    <div class="trace-band" aria-hidden="true">
+      <svg viewBox="0 0 1200 110" preserveAspectRatio="none">
+        <path class="trace" id="trace"/>
+        <rect class="sweep-rect" id="sweep" x="0" y="0" width="36" height="110" fill="var(--ground)" opacity=".92"/>
+      </svg>
+    </div>
+  </section>
+
+  <section class="ag">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Made for how an AG church runs</span>
+        <h2 style="margin-top:14px">It already knows our calendar.</h2>
+        <p class="lede">Vitals was built for Assemblies of God churches from the start. It knows our bylaws, our business meetings, our missions giving, and the Sundays we plan the whole year around.</p>
+      </div>
+      <div class="cal" role="list" aria-label="AG emphasis Sundays on the preaching calendar">
+        <div role="listitem"><small>Spring</small><strong>Pentecost Sunday</strong></div>
+        <div role="listitem"><small>Missions</small><strong>World Missions</strong></div>
+        <div role="listitem"><small>Youth</small><strong>Speed the Light</strong></div>
+        <div role="listitem"><small>Kids</small><strong>BGMC</strong></div>
+        <div role="listitem"><small>Outreach</small><strong>Light for the Lost</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="week">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Your week</span>
+        <h2>From the pulpit to Thursday night, in one place.</h2>
+        <p class="lede">You already know the week. Here is what Vitals does with it.</p>
+      </div>
+
+      <div class="week">
+        <div class="day">
+          <div class="when">Before Sunday</div>
+          <h3>Your preaching</h3>
+          <p>Write in the sermon coach and get honest notes on clarity and application before you step into the pulpit. Open the commentary workbench, type a passage, and get background and cross-references on the spot.</p>
+        </div>
+        <div class="day">
+          <div class="when">Sunday</div>
+          <h3>Your guests</h3>
+          <p>A guest fills out a connection card. Vitals sends a welcome series with a short video you recorded yourself, then follows up by text. Nobody slips away because you were busy.</p>
+        </div>
+        <div class="day">
+          <div class="when">Monday</div>
+          <h3>Your morning</h3>
+          <p>The recap email, a small group guide, a week of social posts, and the bulletin text are drafted in your voice. You read it, change what you want, and approve it.</p>
+        </div>
+        <div class="day">
+          <div class="when">Thursday</div>
+          <h3>Your checklist</h3>
+          <p>A Thursday note catches whatever is still missing before Sunday. A weekly report shows you how the week went.</p>
+        </div>
+      </div>
+
+      <div class="features">
+        <div class="feat">
+          <h3>Your people</h3>
+          <p>After a funeral or a hospital stay, Vitals sets up the follow-up for you with a reminder at the right time and a note drafted in your voice. Membership steps, spiritual gifts, the Sandcastles discipleship pathway, and small groups live here too.</p>
+        </div>
+        <div class="feat">
+          <h3>The hard letters</h3>
+          <p>A resignation or a discipline matter. Vitals helps you write it and flags anything that should go past a lawyer first.</p>
+        </div>
+        <div class="feat">
+          <h3>Your board</h3>
+          <p>Agendas go out with reminders. Minutes are taken and kept. Ask the bylaws helper a question and it answers from your own bylaws. Monthly financials come explained in plain English your board will actually read.</p>
+        </div>
+        <div class="feat">
+          <h3>Your business meeting</h3>
+          <p>Vitals builds the eligible voter list from your membership records, tells you when notice has to go out under your bylaws, prints the ballot, counts the quorum at the door, and drafts the minutes.</p>
+        </div>
+        <div class="feat">
+          <h3>Your annual report</h3>
+          <p>Once a month, enter attendance, conversions, water baptisms, and Spirit baptisms. In January your annual church report is waiting, already filled in and averaged correctly. Review it and submit it.</p>
+        </div>
+        <div class="feat">
+          <h3>Your missions</h3>
+          <p>Keep your missionaries in front of your people with missions videos, and get offering talks written in your own voice.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="monitor-sec" id="health">
+    <div class="wrap">
+      <span class="eyebrow">The health of your church</span>
+      <h2 style="margin-top:14px;max-width:760px">Seven instruments. Read them like a chart.</h2>
+      <p class="lede" style="margin-top:16px">Each one gives you a score and an action plan, so you know where your church is strong and where it is straining before it shows up in the attendance.</p>
+
+      <div class="screen">
+        <div class="inst">
+          <div class="top"><span>Preaching</span><span>01</span></div>
+          <div class="name">Pulse</div>
+          <div class="what">Scored sermon feedback from your congregation and leaders.</div>
+          <div class="read"><span class="num">82</span><svg viewBox="0 0 100 30" preserveAspectRatio="none"><path d="M0 22 L15 20 L30 21 L45 16 L60 17 L75 12 L100 9"/></svg></div>
+        </div>
+        <div class="inst">
+          <div class="top"><span>Governance</span><span>02</span></div>
+          <div class="name">Chart</div>
+          <div class="what">How your board meets and keeps its records.</div>
+          <div class="read"><span class="num">74</span><svg viewBox="0 0 100 30" preserveAspectRatio="none"><path d="M0 18 L20 17 L40 19 L60 15 L80 14 L100 13"/></svg></div>
+        </div>
+        <div class="inst">
+          <div class="top"><span>Vision</span><span>03</span></div>
+          <div class="name">Lens</div>
+          <div class="what">Whether your leadership team sees the same future you do.</div>
+          <div class="read"><span class="num low">58</span><svg viewBox="0 0 100 30" preserveAspectRatio="none"><path d="M0 12 L20 14 L40 13 L60 18 L80 19 L100 21"/></svg></div>
+        </div>
+        <div class="inst">
+          <div class="top"><span>Discipleship</span><span>04</span></div>
+          <div class="name">Rhythm</div>
+          <div class="what">Whether people are actually growing, week over week.</div>
+          <div class="read"><span class="num">69</span><svg viewBox="0 0 100 30" preserveAspectRatio="none"><path d="M0 20 L20 19 L40 17 L60 18 L80 15 L100 14"/></svg></div>
+        </div>
+        <div class="inst">
+          <div class="top"><span>Missions</span><span>05</span></div>
+          <div class="name">Lifeblood</div>
+          <div class="what">How missions is woven into church life, beyond the offering.</div>
+          <div class="read"><span class="num">77</span><svg viewBox="0 0 100 30" preserveAspectRatio="none"><path d="M0 19 L20 18 L40 15 L60 16 L80 12 L100 11"/></svg></div>
+        </div>
+        <div class="inst">
+          <div class="top"><span>Structure</span><span>06</span></div>
+          <div class="name">Frame</div>
+          <div class="what">Your teams and roles, and who is carrying too much.</div>
+          <div class="read"><span class="num low">61</span><svg viewBox="0 0 100 30" preserveAspectRatio="none"><path d="M0 14 L20 15 L40 17 L60 16 L80 18 L100 18"/></svg></div>
+        </div>
+        <div class="inst">
+          <div class="top"><span>Communication</span><span>07</span></div>
+          <div class="name">Voice</div>
+          <div class="what">How clearly your church talks to its own people.</div>
+          <div class="read"><span class="num">80</span><svg viewBox="0 0 100 30" preserveAspectRatio="none"><path d="M0 21 L20 18 L40 18 L60 14 L80 12 L100 10"/></svg></div>
+        </div>
+        <div class="inst legend">
+          <p><b>Green</b> is holding steady or rising.<br><b style="color:#FFB35C">Amber</b> is where to spend this quarter.</p>
+        </div>
+      </div>
+      <p class="sample">SAMPLE READOUT. SCORES ARE ILLUSTRATIVE.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap ekg">
+      <div>
+        <span class="eyebrow">Your own health</span>
+        <h2 style="margin-top:14px">The EKG is for you. Nobody else sees it.</h2>
+        <p class="lede" style="margin-top:16px">The EKG is a private check on how you are doing, apart from how your church is doing. Your answers stay yours. Nothing goes to your district.</p>
+      </div>
+      <div>
+        <p class="quote">A pastor who thinks his answers could reach the office that holds his credentials softens them. A pastor who knows they are private answers honestly and gets help sooner.</p>
+        <div class="ladder" aria-label="Where the EKG points you when you need help">
+          <div><span>FIRST</span>The AG HelpLine</div>
+          <div><span>THEN</span>Counseling and care resources beyond it</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section ask">
+    <div class="wrap">
+      <span class="eyebrow">Ask Vitals</span>
+      <h2 style="margin-top:14px;max-width:760px">Ask it the way you would ask a staff member.</h2>
+      <p class="lede" style="margin-top:16px">Type a plain question and Vitals finds the answer in your own records. Care notes stay with the person who wrote them, and the EKG is never searchable.</p>
+
+      <div class="ask-box">
+        <div class="ask-input">
+          <label for="ask-q" class="visually-hidden" style="position:absolute;left:-9999px">Ask Vitals a question</label>
+          <input id="ask-q" type="text" value="Which August guests never got a second contact?" autocomplete="off">
+          <button class="btn" id="ask-go" type="button">Ask</button>
+        </div>
+        <div class="chips" role="group" aria-label="Example questions">
+          <button class="chip" type="button" data-q="0" aria-pressed="true">Which August guests never got a second contact?</button>
+          <button class="chip" type="button" data-q="1" aria-pressed="false">When did I last preach on Romans 8?</button>
+        </div>
+        <div class="answer" id="ask-a" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="coaching">
+    <div class="wrap coach">
+      <div>
+        <span class="eyebrow">Catalyst Coaching Network</span>
+        <h2 style="margin-top:14px">Coaching every month, with pastors your size.</h2>
+        <p class="lede" style="margin-top:16px">Once a month I lead a coaching session for pastors of churches your size. Send your questions ahead. After the call, the recording and your action steps are waiting in the app, and the action steps show up in your Monday note so they do not fade by Wednesday.</p>
+      </div>
+      <div class="coach-card">
+        <div class="big"><s>$99</s>Included</div>
+        <p>Pastors outside Vitals pay $99 a month for the coaching alone. Every Vitals church is part of the network at no extra cost.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section pricing" id="pricing">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Pricing</span>
+        <h2>Priced by the size of your Sunday.</h2>
+        <p class="lede">Every plan includes every feature and a seat in the coaching network. The plans differ only in staff logins and the guest texting allowance.</p>
+      </div>
+
+      <div class="tiers">
+        <div class="tier">
+          <div>
+            <div class="size">200 and under</div>
+            <h3>Foundation</h3>
+          </div>
+          <div>
+            <div class="price">$89<small> / month</small></div>
+            <div class="yearly">or $890 a year, two months free</div>
+          </div>
+          <dl>
+            <dt>Staff logins</dt><dd>3</dd>
+            <dt>Guest texts a month</dt><dd>200</dd>
+            <dt>Coaching room</dt><dd>Foundation</dd>
+          </dl>
+          <a class="btn ghost" href="#try">Start with Foundation</a>
+        </div>
+        <div class="tier mid">
+          <div>
+            <div class="size">201 to 299</div>
+            <h3>Growth</h3>
+          </div>
+          <div>
+            <div class="price">$149<small> / month</small></div>
+            <div class="yearly">or $1,490 a year, two months free</div>
+          </div>
+          <dl>
+            <dt>Staff logins</dt><dd>8</dd>
+            <dt>Guest texts a month</dt><dd>600</dd>
+            <dt>Coaching room</dt><dd>Growth</dd>
+          </dl>
+          <a class="btn" href="#try">Start with Growth</a>
+        </div>
+        <div class="tier">
+          <div>
+            <div class="size">300 and up</div>
+            <h3>Leadership</h3>
+          </div>
+          <div>
+            <div class="price">$249<small> / month</small></div>
+            <div class="yearly">or $2,490 a year, two months free</div>
+          </div>
+          <dl>
+            <dt>Staff logins</dt><dd>Unlimited</dd>
+            <dt>Guest texts a month</dt><dd>1,500</dd>
+            <dt>Coaching room</dt><dd>Leadership</dd>
+          </dl>
+          <a class="btn ghost" href="#try">Start with Leadership</a>
+        </div>
+      </div>
+
+      <div class="price-notes">
+        <div><b>DCA church?</b> You get 20% off your plan. If your district has a Vitals contract, your district covers it.</div>
+        <div id="try"><b>Try it for a month on your own church.</b> If it does not give you back real hours in your week, cancel before the second month and you are out one month's fee.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="districts">
+    <div class="wrap district">
+      <div>
+        <span class="eyebrow">For superintendents and district officers</span>
+        <h2 style="margin-top:14px">Every DCA church on Vitals, one invoice.</h2>
+        <p class="lede" style="margin-top:16px">By the time a DCA church shows up in the national numbers as struggling, it has usually been struggling for a year or more. Vitals gives your district a clearer picture while it still matters, and it respects your pastors while it does.</p>
+        <div class="actions" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px">
+          <a class="btn" href="#letter">Ask for twenty minutes</a>
+        </div>
+      </div>
+      <div class="facts">
+        <div class="fact"><div class="k">Rate</div><div class="v">$45 per church per month, billed to the district, locked for two years. Send a spreadsheet of churches and pastors and Vitals sends each pastor an invitation.</div></div>
+        <div class="fact"><div class="k">District view</div><div class="v">See which churches have claimed their account and how actively they use it. Health averages appear once five or more churches have reported. No single church's scores are ever shown.</div></div>
+        <div class="fact"><div class="k">Composite</div><div class="v">A yearly report split between DCA and GCA that goes well past the annual church report. No church is named and no figure covers fewer than five churches. Giving shows as percent change, never dollars.</div></div>
+        <div class="fact"><div class="k">Reports</div><div class="v">Annual church reports come in complete and on time, with a reminder before January 31.</div></div>
+        <div class="fact"><div class="k">Coaching</div><div class="v">Every DCA pastor joins the coaching network, and a contracted district gets a room of its own.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="letter" id="letter">
+    <div class="wrap">
+      <div class="inner">
+        <span class="eyebrow">Why I built it</span>
+        <p style="margin-top:22px">I started pastoring at twenty-two without knowing what I was getting into. Most of the work after Sunday never got done well, because it all landed on the same person. I watched good churches drift for a year before anyone noticed, and I see it now from the college side.</p>
+        <p>Vitals is my answer to that. It does the drafting and the remembering so you can do the shepherding. If you want to see it running on a real church, I will walk you through it myself.</p>
+        <div class="sig">Mark Merrill, DMin<span>Founder, Vitals. Author of Vital Signs.</span></div>
+        <div class="actions">
+          <a class="btn" href="#pricing">Try it for a month</a>
+          <a class="btn ghost" href="https://vital-church-life-resource.base44.app" target="_blank" rel="noopener">Sign in</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Vitals. Church software for Assemblies of God pastors.</span>
+    <span>vitals-church.com</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Build a repeating heartbeat trace across the hero band.
+  var d = "M0 70", x = 0, beat = 200;
+  while (x < 1200) {
+    d += " L" + (x+40) + " 70"
+       + " Q" + (x+52) + " 58 " + (x+64) + " 70"
+       + " L" + (x+80) + " 70"
+       + " L" + (x+86) + " 78"
+       + " L" + (x+94) + " 14"
+       + " L" + (x+102) + " 96"
+       + " L" + (x+108) + " 70"
+       + " L" + (x+128) + " 70"
+       + " Q" + (x+146) + " 50 " + (x+164) + " 70"
+       + " L" + (x+beat) + " 70";
+    x += beat;
+  }
+  document.getElementById("trace").setAttribute("d", d);
+
+  var sweep = document.getElementById("sweep");
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) { sweep.remove(); }
+  else {
+    var start = null;
+    function tick(t){
+      if (start === null) start = t;
+      var pos = ((t - start) / 4200 * 1236) % 1236 - 36;
+      sweep.setAttribute("x", pos.toFixed(1));
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // Ask Vitals example answers.
+  var answers = [
+    '<div class="label">Example answer</div>Four guests from August have only had the first welcome email:<ul><li><a href="#ask">Jordan and Kaylee Price</a>, first visit Aug 31</li><li><a href="#ask">Marcus Hill</a>, first visit Aug 17</li><li><a href="#ask">The Nguyen family</a>, first visit Aug 10</li><li><a href="#ask">Dana Brooks</a>, first visit Aug 3</li></ul>',
+    '<div class="label">Example answer</div>You last preached Romans 8:28 to 39 on <a href="#ask">March 9, 2025</a>, in the series "No Condemnation." Before that, Romans 8:1 to 11 in October 2023.'
+  ];
+  var q = document.getElementById("ask-q");
+  var a = document.getElementById("ask-a");
+  var chips = document.querySelectorAll(".chip");
+  function show(i){
+    a.innerHTML = answers[i];
+    chips.forEach(function(c){ c.setAttribute("aria-pressed", c.dataset.q == i ? "true" : "false"); });
+  }
+  chips.forEach(function(c){
+    c.addEventListener("click", function(){ q.value = c.textContent; show(+c.dataset.q); });
+  });
+  document.getElementById("ask-go").addEventListener("click", function(){
+    var v = q.value.toLowerCase();
+    if (v.indexOf("romans") > -1 || v.indexOf("preach") > -1) show(1);
+    else if (v.indexOf("guest") > -1) show(0);
+    else a.innerHTML = '<div class="label">Example</div>This demo answers the two sample questions above. In Vitals, Ask searches your sermons, guests, care, minutes, and membership.';
+  });
+  q.addEventListener("keydown", function(e){ if (e.key === "Enter") document.getElementById("ask-go").click(); });
+  show(0);
+})();
+</script>
