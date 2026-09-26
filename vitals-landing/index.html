@@ -334,6 +334,11 @@ p{margin:0}
 .letter .sig{font-family:var(--display);font-weight:800;font-size:1.3rem;margin-top:28px}
 .letter .sig span{display:block;font-family:var(--mono);font-weight:400;font-size:.78rem;color:var(--ink-soft);letter-spacing:.06em;margin-top:4px}
 .letter .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.letter .inner.letter-grid{max-width:1000px;display:grid;grid-template-columns:320px 1fr;gap:56px;align-items:start}
+.portrait{margin:0;position:sticky;top:96px}
+.portrait img{display:block;width:100%;height:auto;aspect-ratio:480/530;object-fit:cover;border-radius:10px;box-shadow:var(--shadow);outline:1px solid var(--line);outline-offset:6px}
+.portrait::after{content:"";display:block;height:3px;width:56px;background:var(--accent);margin-top:18px;border-radius:2px}
+@media (max-width:820px){.letter .inner.letter-grid{grid-template-columns:1fr;gap:32px}.portrait{position:static;max-width:260px}}
 
 footer{border-top:1px solid var(--line);padding-block:28px;font-family:var(--display);font-size:.9rem;color:var(--ink-soft)}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
@@ -734,14 +739,20 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
   <section class="letter" id="letter">
     <div class="wrap">
-      <div class="inner">
-        <span class="eyebrow">Why I built it</span>
-        <p style="margin-top:22px">I started pastoring at twenty-two without knowing what I was getting into. Most of the work after Sunday never got done well, because it all landed on the same person. I watched good churches drift for a year before anyone noticed, and I see it now from the college side.</p>
-        <p>Vitals is my answer to that. It does the drafting and the remembering so you can do the shepherding. If you want to see it running on a real church, I will walk you through it myself.</p>
-        <div class="sig">Mark Merrill, DMin<span>Founder, Vitals. Author of Vital Signs.</span></div>
-        <div class="actions">
-          <a class="btn" href="#pricing">Try it for a month</a>
-          <a class="btn ghost" href="https://vital-church-life-resource.base44.app" target="_blank" rel="noopener">Sign in</a>
+      <div class="inner letter-grid">
+        <figure class="portrait">
+          <img src="assets/mark-merrill.jpg" alt="Mark Merrill, founder of Vitals" width="480" height="530" onerror="this.parentNode.remove()">
+        </figure>
+        <div>
+          <span class="eyebrow">Why I built it</span>
+          <p style="margin-top:22px">I have pastored for more than 30 years and served as a District Superintendent. Today I lead in Christian higher education, and I have spent my life and ministry researching and leading church revitalization.</p>
+          <p>Vitals was born out of my doctoral research and out of years leading churches of fewer than 100 people and churches of more than 3,000. I started pastoring at twenty-two without knowing what I was getting into. Most of the work after Sunday never got done well, because it all landed on the same person. I watched good churches drift for a year before anyone noticed.</p>
+          <p>Vitals is my answer to that. It does the drafting and the remembering so you can do the shepherding. If you want to see it running on a real church, I will walk you through it myself.</p>
+          <div class="sig">Mark Merrill, DMin<span>Founder, Vitals. Author of Vital Signs.</span></div>
+          <div class="actions">
+            <a class="btn" href="#pricing">Try it for a month</a>
+            <a class="btn ghost" href="https://vital-church-life-resource.base44.app" target="_blank" rel="noopener">Sign in</a>
+          </div>
         </div>
       </div>
     </div>
