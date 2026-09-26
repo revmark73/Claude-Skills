@@ -109,35 +109,50 @@ p{margin:0}
 @media (max-width:860px){.nav-links a:not(.btn){display:none}}
 
 /* Hero */
-.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
-.ecg-paper{
-  position:absolute;inset:0;pointer-events:none;
-  background-image:
-    linear-gradient(var(--grid-major) 1px,transparent 1px),
-    linear-gradient(90deg,var(--grid-major) 1px,transparent 1px),
-    linear-gradient(var(--grid) 1px,transparent 1px),
-    linear-gradient(90deg,var(--grid) 1px,transparent 1px);
-  background-size:100px 100px,100px 100px,20px 20px,20px 20px;
-  mask-image:linear-gradient(180deg,rgba(0,0,0,.9),rgba(0,0,0,.35));
-  -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.9),rgba(0,0,0,.35));
+.hero{
+  position:relative;overflow:hidden;color:#EAF1EF;
+  background:
+    radial-gradient(1200px 520px at 78% 18%,rgba(194,31,58,.22),transparent 60%),
+    radial-gradient(900px 600px at 8% 100%,rgba(40,86,91,.45),transparent 65%),
+    #0A1316;
 }
-.hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding-block:72px 40px}
-.hero h1{font-size:clamp(2.8rem,6.6vw,5.4rem);font-weight:900;letter-spacing:-.035em;margin-block:18px 22px}
-.hero h1 em{font-style:normal;color:var(--accent)}
-.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.hero .fine{margin-top:16px;font-size:.95rem;color:var(--ink-soft)}
-.hours{display:flex;align-items:center;gap:16px;margin-top:26px;padding:14px 18px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;background:var(--surface);max-width:30em}
-.hours .n{font-family:var(--display);font-weight:900;font-size:2.4rem;letter-spacing:-.03em;line-height:1;color:var(--accent);white-space:nowrap;font-variant-numeric:tabular-nums}
-.hours .t{font-family:var(--display);font-size:.98rem;line-height:1.35}
-.hours .t small{display:block;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:4px}
-@media (max-width:420px){.hours{flex-direction:column;align-items:flex-start;gap:6px}}
-@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:40px;padding-block:48px 32px}}
-
-.trace-band{position:relative;height:110px;margin-top:8px}
-.trace-band svg{position:absolute;inset:0;width:100%;height:100%}
-.trace-band .trace{fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
-.trace-band .sweep{fill:none;stroke:var(--ground);stroke-width:8;opacity:.9}
-@media (prefers-reduced-motion:reduce){.trace-band .sweep{display:none}}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
+.hero .wrap{position:relative}
+.hero-top{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;padding-block:84px 0}
+.hero .eyebrow{color:#FF8FA0}
+.hero h1{font-size:clamp(3rem,7.6vw,6.6rem);font-weight:900;letter-spacing:-.045em;line-height:.95;margin-block:20px 24px;color:#FFFFFF}
+.hero h1 em{font-style:normal;color:#FF4D66;display:block}
+.hero .lede{color:#A9BDBA;max-width:34em}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero .btn{background:#E0243F;border-color:#E0243F;color:#FFFFFF}
+.hero .btn.ghost{background:transparent;border-color:rgba(234,241,239,.35);color:#EAF1EF}
+.hero .btn.ghost:hover{border-color:#EAF1EF}
+.hero .fine{margin-top:16px;font-size:.95rem;color:#7E9894}
+.hero .note{color:var(--ink);transform:rotate(1.2deg);box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.06)}
+.trace-gap{height:190px}
+.readouts{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;border-top:1px solid rgba(234,241,239,.14);margin-bottom:0}
+.ro{padding:22px 22px 30px 0;display:flex;flex-direction:column;gap:8px}
+.ro + .ro{padding-left:22px;border-left:1px solid rgba(234,241,239,.14)}
+.ro .lbl{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#7E9894;display:flex;align-items:center;gap:8px}
+.ro .lbl i{width:7px;height:7px;border-radius:50%;background:#5FE3B0;box-shadow:0 0 10px #5FE3B0}
+.ro .val{font-family:var(--display);font-weight:900;font-size:2.6rem;line-height:1;letter-spacing:-.03em;color:#5FE3B0;font-variant-numeric:tabular-nums}
+.ro .sub{font-family:var(--display);font-size:.95rem;color:#A9BDBA}
+.ro.big .lbl i{background:#FF4D66;box-shadow:0 0 12px #FF4D66;animation:blip 1.2s ease-in-out infinite}
+.ro.big .val{font-size:clamp(3.4rem,7vw,5.6rem);color:#FF4D66;text-shadow:0 0 28px rgba(255,77,102,.45)}
+.ro.big .val small{font-size:.32em;letter-spacing:0;color:#EAF1EF;font-weight:700;margin-left:10px}
+@keyframes blip{0%,100%{opacity:1}50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.ro.big .lbl i{animation:none}}
+@media (max-width:900px){
+  .hero-top{grid-template-columns:1fr;gap:44px;padding-block:56px 0}
+  .hero .note{transform:none}
+  .trace-gap{height:150px}
+  .readouts{grid-template-columns:1fr 1fr}
+  .ro.big{grid-column:1/-1;border-bottom:1px solid rgba(234,241,239,.14)}
+  .ro + .ro{border-left:0;padding-left:0}
+  .ro:nth-child(3),.ro:nth-child(4){padding-left:22px;border-left:1px solid rgba(234,241,239,.14)}
+  .ro:nth-child(3){padding-left:0;border-left:0}
+}
+@media (max-width:420px){.ro:nth-child(4){padding-left:14px}}
 
 /* Monday note mock */
 .note{
@@ -301,51 +316,66 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
 <main id="top">
   <section class="hero">
-    <div class="ecg-paper" aria-hidden="true"></div>
+    <canvas id="monitor" aria-hidden="true"></canvas>
     <div class="wrap">
-      <div>
-        <span class="eyebrow">Church software for Assemblies of God pastors</span>
-        <h1>The work that happens <em>after Sunday.</em></h1>
-        <p class="lede">Sunday ends, and before you have rested there is a recap to write, a guest to call, a family in the hospital, and a sermon for next week that is still a blank page. Vitals carries the part of that load a machine can carry, so you have more of yourself for the part only you can do.</p>
-        <div class="hours">
-          <span class="n">8 to 10</span>
-          <span class="t">hours a week back in your hands. That is what Vitals is built to give you.<small>Estimated time saved per pastor</small></span>
+      <div class="hero-top">
+        <div>
+          <span class="eyebrow">Church software for Assemblies of God pastors</span>
+          <h1>The work that happens <em>after Sunday.</em></h1>
+          <p class="lede">Sunday ends, and before you have rested there is a recap to write, a guest to call, a family in the hospital, and a sermon for next week that is still a blank page. Vitals carries the part of that load a machine can carry, so you have more of yourself for the part only you can do.</p>
+          <div class="actions">
+            <a class="btn" href="#pricing">Try it for a month</a>
+            <a class="btn ghost" href="#week">See your week in Vitals</a>
+          </div>
+          <p class="fine">Built by a pastor and written in your voice. Nothing goes out until you approve it.</p>
         </div>
-        <div class="actions">
-          <a class="btn" href="#pricing">Try it for a month</a>
-          <a class="btn ghost" href="#week">See your week in Vitals</a>
-        </div>
-        <p class="fine">Built by a pastor and written in your voice. Nothing goes out until you approve it.</p>
-      </div>
 
-      <aside class="note" aria-label="Example Monday note">
-        <div class="note-head">
-          <strong>Your Monday note</strong>
-          <span>MON 7:00 AM</span>
+        <aside class="note" aria-label="Example Monday note">
+          <div class="note-head">
+            <strong>Your Monday note</strong>
+            <span>MON 7:00 AM</span>
+          </div>
+          <div class="note-sec">
+            <h4>Who needs a call</h4>
+            <div class="note-row"><span><b>The Alvarez family</b>, hospital stay ended Friday</span><span class="tag due">Call today</span></div>
+            <div class="note-row"><span><b>Ruth Ellison</b>, two weeks since her husband's funeral</span><span class="tag due">Note drafted</span></div>
+          </div>
+          <div class="note-sec">
+            <h4>Guests gone quiet</h4>
+            <div class="note-row"><span><b>Jordan and Kaylee Price</b>, first visit Aug 31</span><span class="tag quiet">No 2nd contact</span></div>
+          </div>
+          <div class="note-sec">
+            <h4>Waiting on you</h4>
+            <div class="note-row"><span>Sunday recap email, ready to review</span><span class="tag ok">Draft</span></div>
+            <div class="note-row"><span>Board agenda for Thursday</span><span class="tag ok">1 item open</span></div>
+            <div class="note-row"><span>Coaching action step: plan the fall series</span><span class="tag ok">From Sept call</span></div>
+          </div>
+          <div class="note-foot">Example note. Names are made up.</div>
+        </aside>
+      </div>
+      <div class="trace-gap" id="trace-gap"></div>
+      <div class="readouts">
+        <div class="ro big">
+          <span class="lbl"><i></i>Hours back each week</span>
+          <span class="val">8 to 10<small>hrs</small></span>
+          <span class="sub">What Vitals is built to give every pastor, estimated.</span>
         </div>
-        <div class="note-sec">
-          <h4>Who needs a call</h4>
-          <div class="note-row"><span><b>The Alvarez family</b>, hospital stay ended Friday</span><span class="tag due">Call today</span></div>
-          <div class="note-row"><span><b>Ruth Ellison</b>, two weeks since her husband's funeral</span><span class="tag due">Note drafted</span></div>
+        <div class="ro">
+          <span class="lbl"><i></i>Health instruments</span>
+          <span class="val">7</span>
+          <span class="sub">Pulse to Voice</span>
         </div>
-        <div class="note-sec">
-          <h4>Guests gone quiet</h4>
-          <div class="note-row"><span><b>Jordan and Kaylee Price</b>, first visit Aug 31</span><span class="tag quiet">No 2nd contact</span></div>
+        <div class="ro">
+          <span class="lbl"><i></i>AG Sundays</span>
+          <span class="val">5</span>
+          <span class="sub">Already on your calendar</span>
         </div>
-        <div class="note-sec">
-          <h4>Waiting on you</h4>
-          <div class="note-row"><span>Sunday recap email, ready to review</span><span class="tag ok">Draft</span></div>
-          <div class="note-row"><span>Board agenda for Thursday</span><span class="tag ok">1 item open</span></div>
-          <div class="note-row"><span>Coaching action step: plan the fall series</span><span class="tag ok">From Sept call</span></div>
+        <div class="ro">
+          <span class="lbl"><i></i>Coaching</span>
+          <span class="val">Monthly</span>
+          <span class="sub">Included on every plan</span>
         </div>
-        <div class="note-foot">Example note. Names are made up.</div>
-      </aside>
-    </div>
-    <div class="trace-band" aria-hidden="true">
-      <svg viewBox="0 0 1200 110" preserveAspectRatio="none">
-        <path class="trace" id="trace"/>
-        <rect class="sweep-rect" id="sweep" x="0" y="0" width="36" height="110" fill="var(--ground)" opacity=".92"/>
-      </svg>
+      </div>
     </div>
   </section>
 
@@ -646,35 +676,87 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
 <script>
 (function(){
-  // Build a repeating heartbeat trace across the hero band.
-  var d = "M0 70", x = 0, beat = 200;
-  while (x < 1200) {
-    d += " L" + (x+40) + " 70"
-       + " Q" + (x+52) + " 58 " + (x+64) + " 70"
-       + " L" + (x+80) + " 70"
-       + " L" + (x+86) + " 78"
-       + " L" + (x+94) + " 14"
-       + " L" + (x+102) + " 96"
-       + " L" + (x+108) + " 70"
-       + " L" + (x+128) + " 70"
-       + " Q" + (x+146) + " 50 " + (x+164) + " 70"
-       + " L" + (x+beat) + " 70";
-    x += beat;
-  }
-  document.getElementById("trace").setAttribute("d", d);
-
-  var sweep = document.getElementById("sweep");
+  // Heart monitor across the hero: ECG paper plus a sweeping trace.
+  var cv = document.getElementById("monitor");
+  var hero = cv.parentNode;
+  var gap = document.getElementById("trace-gap");
+  var ctx = cv.getContext("2d");
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduce) { sweep.remove(); }
-  else {
-    var start = null;
-    function tick(t){
-      if (start === null) start = t;
-      var pos = ((t - start) / 4200 * 1236) % 1236 - 36;
-      sweep.setAttribute("x", pos.toFixed(1));
-      requestAnimationFrame(tick);
+  var W = 0, H = 0, base = 0, amp = 0, dpr = 1;
+
+  function beatY(x){
+    var period = 260, t = ((x % period) + period) % period;
+    if (t < 60) return 0;
+    if (t < 84) return -0.12 * Math.sin((t - 60) / 24 * Math.PI);
+    if (t < 100) return 0;
+    if (t < 106) return 0.10 * (t - 100) / 6;
+    if (t < 114) return 0.10 - 1.10 * (t - 106) / 8;
+    if (t < 124) return -1.0 + 1.45 * (t - 114) / 10;
+    if (t < 132) return 0.45 - 0.45 * (t - 124) / 8;
+    if (t < 156) return 0;
+    if (t < 196) return -0.22 * Math.sin((t - 156) / 40 * Math.PI);
+    return 0;
+  }
+  function size(){
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = hero.clientWidth; H = hero.clientHeight;
+    cv.width = W * dpr; cv.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var hr = hero.getBoundingClientRect(), gr = gap.getBoundingClientRect();
+    base = gr.top - hr.top + gr.height * 0.62;
+    amp = Math.min(gr.height * 0.62, 120);
+  }
+  function grid(){
+    ctx.clearRect(0, 0, W, H);
+    for (var x = 0; x < W; x += 20){
+      ctx.strokeStyle = x % 100 === 0 ? "rgba(255,77,102,.10)" : "rgba(255,77,102,.045)";
+      ctx.beginPath(); ctx.moveTo(x + .5, 0); ctx.lineTo(x + .5, H); ctx.stroke();
     }
-    requestAnimationFrame(tick);
+    for (var y = 0; y < H; y += 20){
+      ctx.strokeStyle = y % 100 === 0 ? "rgba(255,77,102,.10)" : "rgba(255,77,102,.045)";
+      ctx.beginPath(); ctx.moveTo(0, y + .5); ctx.lineTo(W, y + .5); ctx.stroke();
+    }
+  }
+  function path(x0, x1){
+    ctx.beginPath();
+    for (var x = x0; x <= x1; x += 1.5){
+      var y = base + beatY(x) * amp;
+      if (x === x0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+  }
+  function draw(head){
+    grid();
+    ctx.lineJoin = "round"; ctx.lineCap = "round";
+    // older trace, dim, with a clear gap ahead of the pen
+    ctx.strokeStyle = "rgba(255,77,102,.28)"; ctx.lineWidth = 2;
+    if (head === null){ path(0, W); ctx.stroke(); }
+    else {
+      if (head + 60 < W){ path(head + 60, W); ctx.stroke(); }
+      // fresh trace, bright with glow
+      var tail = Math.max(0, head - W * 0.9);
+      var g = ctx.createLinearGradient(tail, 0, head, 0);
+      g.addColorStop(0, "rgba(255,77,102,.25)"); g.addColorStop(1, "rgba(255,90,115,1)");
+      ctx.strokeStyle = g; ctx.lineWidth = 3;
+      ctx.shadowColor = "rgba(255,77,102,.8)"; ctx.shadowBlur = 14;
+      path(tail, head); ctx.stroke();
+      ctx.shadowBlur = 0;
+      var hy = base + beatY(head) * amp;
+      ctx.fillStyle = "#FFFFFF"; ctx.shadowColor = "#FF4D66"; ctx.shadowBlur = 22;
+      ctx.beginPath(); ctx.arc(head, hy, 4, 0, Math.PI * 2); ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+  }
+  size();
+  window.addEventListener("resize", function(){ size(); if (reduce) draw(null); });
+  if (reduce){ draw(null); }
+  else {
+    var t0 = null, speed = 260; // px per second
+    (function frame(t){
+      if (t0 === null) t0 = t - (W * 0.7 / speed) * 1000;
+      var head = ((t - t0) / 1000 * speed) % (W + 60);
+      draw(head);
+      requestAnimationFrame(frame);
+    })(performance.now());
   }
 
   // Ask Vitals example answers.
