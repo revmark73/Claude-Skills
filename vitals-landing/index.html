@@ -157,7 +157,7 @@ p{margin:0}
 
 /* Film: scroll-driven hero */
 .film{position:relative;background:#0A1316;color:#EAF1EF}
-.film.is-scrub{height:1000vh}
+.film.is-scrub{height:1300vh}
 .film-stage{position:relative;height:min(88vh,860px);min-height:520px;overflow:hidden}
 .film.is-scrub .film-stage{position:sticky;top:0;height:100vh}
 .film-poster,.film-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .6s ease}
@@ -169,16 +169,29 @@ p{margin:0}
   linear-gradient(180deg,rgba(10,19,22,.55),transparent 32%,transparent 70%,rgba(10,19,22,.85))}
 .film-band{position:absolute;left:0;right:0;top:20%;text-align:center;padding-inline:24px;opacity:0;pointer-events:none;will-change:opacity,transform}
 .film-band p{margin:0 auto;max-width:18ch;font-family:var(--display);font-weight:800;font-size:clamp(2.2rem,5.4vw,4.6rem);letter-spacing:-.03em;line-height:1.02;color:#FFFFFF;text-wrap:balance;text-shadow:0 2px 30px rgba(0,0,0,.6),0 0 40px rgba(255,77,102,.25)}
-.film-settle{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;padding:12vh 24px 9vh;opacity:1}
-.film.is-scrub .film-settle{opacity:0;pointer-events:none}
+.film-settle{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:10vh 5vw 8vh;--m:1;--d:1}
+.film-lockup{grid-column:2;display:flex;flex-direction:column;gap:22px;max-width:560px}
+.film.is-scrub .film-settle{pointer-events:none}
 .film.is-scrub .film-settle.is-on{pointer-events:auto}
-.film-settle .eyebrow{color:#FF8FA0;justify-content:center}
-.film-settle .eyebrow::before{display:none}
-.film-settle h1{font-size:clamp(2.6rem,6.4vw,5.6rem);font-weight:900;letter-spacing:-.045em;line-height:.96;margin-top:14px;color:#FFFFFF;text-shadow:0 4px 40px rgba(0,0,0,.7)}
+.film-mark{font-family:var(--display);font-weight:900;font-size:clamp(4rem,11vw,10rem);line-height:.85;letter-spacing:-.055em;color:#FFFFFF;
+  clip-path:inset(-20% calc((1 - var(--m)) * 100%) -20% 0);opacity:calc(.2 + var(--m) * .8);
+  filter:blur(calc((1 - var(--m)) * 10px));transform:translateX(calc((1 - var(--m)) * -40px));
+  text-shadow:0 0 calc(var(--m) * 60px) rgba(255,77,102,.45),0 4px 40px rgba(0,0,0,.6)}
+.film-mark span{color:#FF4D66}
+.film-details{opacity:var(--d);transform:translateY(calc((1 - var(--d)) * 22px))}
+.film-settle .eyebrow{color:#FF8FA0}
+.film-settle .eyebrow::before{background:#FF8FA0}
+.film-settle h1{font-size:clamp(2rem,3.6vw,3.4rem);font-weight:900;letter-spacing:-.04em;line-height:1;margin-top:12px;color:#FFFFFF;text-shadow:0 4px 40px rgba(0,0,0,.7)}
 .film-settle h1 em{font-style:normal;color:#FF4D66;text-shadow:0 0 34px rgba(255,77,102,.5)}
-.film-settle .actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.film-settle .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
 .film-settle .btn{background:#E0243F;border-color:#E0243F;color:#FFFFFF}
 .film-settle .btn.ghost{background:rgba(10,19,22,.4);border-color:rgba(234,241,239,.4);color:#EAF1EF;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+@media (max-width:760px){
+  .film-stage{height:auto;min-height:0}
+  .film-poster{position:relative;height:auto;aspect-ratio:16/9;object-position:30% 50%}
+  .film-settle{position:relative;display:block;padding:28px 16px 40px;background:#0A1316}
+  .film-mark{font-size:clamp(3.4rem,18vw,5rem)}
+}
 .film-hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font-family:var(--mono);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#7E9894;transition:opacity .4s ease}
 .film:not(.is-scrub) .film-hint{display:none}
 .hero h2.big{font-size:clamp(2.4rem,5vw,4.2rem);font-weight:900;letter-spacing:-.04em;line-height:1;margin-block:18px 22px;color:#FFFFFF}
@@ -367,17 +380,20 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <img class="film-poster" id="filmPoster" src="assets/hero-end.jpg" data-start="assets/hero-start.jpg" alt="" onerror="this.remove()">
       <video id="filmVideo" class="film-media" data-src="assets/hero.mp4" data-src-webm="assets/hero.webm" muted playsinline preload="auto" aria-hidden="true"></video>
       <div class="film-vignette" aria-hidden="true"></div>
-      <div class="film-band" data-from="0.03" data-to="0.24" aria-hidden="true"><p>Sunday ends.</p></div>
-      <div class="film-band" data-from="0.30" data-to="0.52" aria-hidden="true"><p>Monday is already waiting.</p></div>
-      <div class="film-band" data-from="0.58" data-to="0.78" aria-hidden="true"><p>Vitals keeps the heartbeat steady.</p></div>
+      <div class="film-band" data-from="0.03" data-to="0.20" aria-hidden="true"><p>Sunday ends.</p></div>
+      <div class="film-band" data-from="0.26" data-to="0.44" aria-hidden="true"><p>Monday is already waiting.</p></div>
+      <div class="film-band" data-from="0.50" data-to="0.66" aria-hidden="true"><p>Vitals keeps the heartbeat steady.</p></div>
       <div class="film-settle" id="filmSettle">
-        <div>
-          <span class="eyebrow">Church software for Assemblies of God pastors</span>
-          <h1>The work that happens <em>after Sunday.</em></h1>
-        </div>
-        <div class="actions">
-          <a class="btn" href="#pricing">Try it for a month</a>
-          <a class="btn ghost" href="#week">See your week in Vitals</a>
+        <div class="film-lockup">
+          <div class="film-mark" aria-hidden="true">Vitals<span>.</span></div>
+          <div class="film-details">
+            <span class="eyebrow">Church software for Assemblies of God pastors</span>
+            <h1>The work that happens <em>after Sunday.</em></h1>
+            <div class="actions">
+              <a class="btn" href="#pricing">Try it for a month</a>
+              <a class="btn ghost" href="#week">See your week in Vitals</a>
+            </div>
+          </div>
         </div>
       </div>
       <div class="film-hint" id="filmHint" aria-hidden="true">Scroll</div>
@@ -922,13 +938,14 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
         b.el.style.transform = "translateY(" + ((p - mid) * -120).toFixed(1) + "px)";
       }
     }
-    var so = ease(Math.min(1, Math.max(0, (p - 0.82) / 0.12)));
-    var sk = Math.round(so * 50);
+    var m = ease(Math.min(1, Math.max(0, (p - 0.72) / 0.12)));
+    var d = ease(Math.min(1, Math.max(0, (p - 0.85) / 0.10)));
+    var sk = Math.round(m * 50) * 100 + Math.round(d * 50);
     if (sk !== lastSettle){
       lastSettle = sk;
-      settle.style.opacity = so.toFixed(3);
-      settle.style.transform = "translateY(" + ((1 - so) * 24).toFixed(1) + "px)";
-      settle.classList.toggle("is-on", so > 0.5);
+      settle.style.setProperty("--m", m.toFixed(3));
+      settle.style.setProperty("--d", d.toFixed(3));
+      settle.classList.toggle("is-on", d > 0.5);
       if (hint) hint.style.opacity = p > 0.04 ? "0" : "1";
     }
   }
