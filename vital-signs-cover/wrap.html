@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Vital Signs Wrap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Schibsted+Grotesk:wght@700;800;900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=block">
+<style>
+
+  :root {
+    --night:#0A1316;
+    --ink:#ECF1EF;
+    --ink-soft:#A9B9B6;
+    --accent:#F05A70;
+    --trace:#5FE3B0;
+  }
+  html, body { margin:0; padding:0; background:var(--night); }
+  .cover {
+    position:relative; width:1800px; height:2700px; overflow:hidden;
+    background:var(--night);
+  }
+  .cover svg.world { position:absolute; inset:0; }
+  .type { position:absolute; inset:0; text-align:center; color:var(--ink); }
+  .title {
+    position:absolute; left:0; right:0; top:170px;
+    font-family:"Schibsted Grotesk", sans-serif; font-weight:900;
+    font-size:280px; line-height:.88; letter-spacing:.01em; margin:0;
+    text-shadow:0 0 60px rgba(240,90,112,.18);
+  }
+  .rule {
+    position:absolute; left:50%; top:705px; width:120px; height:4px; margin-left:-60px;
+    background:var(--accent); border-radius:2px;
+    box-shadow:0 0 18px rgba(240,90,112,.7);
+  }
+  .subtitle {
+    position:absolute; left:150px; right:150px; top:750px; margin:0;
+    font-family:"Source Serif 4", serif; font-style:italic; font-weight:400;
+    font-size:68px; line-height:1.22; color:var(--ink);
+  }
+  .diagnosis {
+    position:absolute; left:120px; right:120px; top:2080px; margin:0;
+    font-family:"Source Serif 4", serif; font-weight:400;
+    font-size:54px; line-height:1.36; color:#C3D0CD;
+  }
+  .diagnosis::before, .diagnosis::after { color:var(--accent); }
+  .diagnosis::before { content:"\201C"; }
+  .diagnosis::after { content:"\201D"; }
+  .author {
+    position:absolute; left:0; right:0; top:2440px; margin:0;
+    font-family:"Schibsted Grotesk", sans-serif; font-weight:800;
+    font-size:84px; letter-spacing:.12em; color:var(--ink);
+  }
+  .author span {
+    font-family:"Source Serif 4", serif; font-weight:400; font-style:italic;
+    letter-spacing:.02em; color:var(--ink-soft); font-size:70px;
+  }
+
+  .wrap { position:relative; width:3795.0px; height:2775.0px; overflow:hidden; background:#060C0E; }
+  .wrap > svg { position:absolute; left:0; top:0; }
+  .front { position:absolute; left:1957.5px; top:37.5px; width:1800px; height:2700px; }
+  .front .type { position:absolute; inset:0; }
+
+  .back { position:absolute; left:37.5px; top:37.5px; width:1800.0px; height:2700.0px; color:var(--ink); }
+  .back .cat { position:absolute; left:170px; top:190px; margin:0;
+    font-family:"IBM Plex Mono", monospace; font-weight:500; font-size:30px;
+    letter-spacing:.14em; color:var(--trace); opacity:.8; }
+  .back h2 { position:absolute; left:170px; right:170px; top:270px; margin:0;
+    font-family:"Schibsted Grotesk", sans-serif; font-weight:800;
+    font-size:96px; line-height:1.02; letter-spacing:-.005em; }
+  .back h2 em { font-style:normal; color:var(--accent); }
+  .back .blurb { position:absolute; left:170px; right:170px; top:610px; }
+  .back .blurb p { margin:0 0 34px; font-family:"Source Serif 4", serif;
+    font-size:47px; line-height:1.42; color:#D7E1DE; }
+  .back .blurb p.close { font-style:italic; color:var(--ink); }
+  .back .rule { position:absolute; left:170px; top:1560px; width:120px; height:4px;
+    margin-left:0; background:var(--accent); border-radius:2px; box-shadow:0 0 18px rgba(240,90,112,.7); }
+  .back .photo { position:absolute; left:170px; top:1640px; width:420px; height:464px;
+    background:url(author.jpg) center/cover; border-radius:6px;
+    box-shadow:0 0 0 3px #C21F3A, 0 0 40px rgba(240,90,112,.35); }
+  .back .bio { position:absolute; left:650px; right:170px; top:1632px; margin:0;
+    font-family:"Source Serif 4", serif; font-size:37px; line-height:1.42; color:#C3D0CD; }
+  .back .bio b { font-family:"Schibsted Grotesk", sans-serif; font-weight:800;
+    letter-spacing:.08em; color:var(--ink); font-size:36px; }
+  .back .bio .fill { color:#FFB3BE; background:rgba(194,31,58,.25); padding:0 6px; border-radius:4px; }
+  .barcode { position:absolute; right:75.0px; bottom:75.0px; width:600px; height:360px; background:#fff; }
+
+  .spine { position:absolute; left:1837.5px; top:37.5px; width:120.0px; height:2700.0px;
+    display:flex; flex-direction:column; align-items:center; }
+  .spine .t { writing-mode:vertical-rl; margin-top:230px;
+    font-family:"Schibsted Grotesk", sans-serif; font-weight:900; font-size:66px;
+    letter-spacing:.06em; color:var(--ink); white-space:nowrap; }
+  .spine .a { writing-mode:vertical-rl; position:absolute; top:2010px;
+    font-family:"Schibsted Grotesk", sans-serif; font-weight:800; font-size:44px;
+    letter-spacing:.16em; color:var(--ink); white-space:nowrap; }
+  .spine svg { position:absolute; top:2440px; left:50%; transform:translateX(-50%); overflow:visible; }
+
+  .guides { position:absolute; inset:0; pointer-events:none; display:none; }
+  .proof .guides { display:block; }
+  .guides div { position:absolute; }
+  .g-trim { left:37.5px; top:37.5px; right:37.5px; bottom:37.5px; outline:3px solid #00E5FF; }
+  .g-fold { top:0; bottom:0; width:0; border-left:3px dashed #00E5FF; }
+  .g-safe { outline:2px dashed #FFE14D; }
+  .g-label { font:500 30px "IBM Plex Mono", monospace; color:#111; background:#FFE14D; padding:4px 10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <svg width="3795.0" height="2775.0" viewBox="0 0 3795.0 2775.0" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      
+      <radialGradient id="sky" cx="50%" cy="66%" r="70%">
+        <stop offset="0" stop-color="#16303A"/>
+        <stop offset=".45" stop-color="#0D1C21"/>
+        <stop offset="1" stop-color="#060C0E"/>
+      </radialGradient>
+      <radialGradient id="bloom" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#FF4A5E" stop-opacity=".55"/>
+        <stop offset=".35" stop-color="#C21F3A" stop-opacity=".22"/>
+        <stop offset="1" stop-color="#C21F3A" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="beatL" x1="0" x2="900" y1="0" y2="0" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#5FE3B0" stop-opacity="0"/>
+        <stop offset=".18" stop-color="#5FE3B0" stop-opacity=".85"/>
+        <stop offset=".62" stop-color="#FF8A7A"/>
+        <stop offset="1" stop-color="#FF4A5E"/>
+      </linearGradient>
+      <linearGradient id="beatR" x1="1800" x2="900" y1="0" y2="0" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#5FE3B0" stop-opacity="0"/>
+        <stop offset=".18" stop-color="#5FE3B0" stop-opacity=".85"/>
+        <stop offset=".62" stop-color="#FF8A7A"/>
+        <stop offset="1" stop-color="#FF4A5E"/>
+      </linearGradient>
+      <linearGradient id="reflect" x1="0" x2="0" y1="1860" y2="2500" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#FF6A78" stop-opacity=".75"/>
+        <stop offset="1" stop-color="#FF6A78" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="floorShade" x1="0" x2="0" y1="1860" y2="2700" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#0A1417" stop-opacity="0"/>
+        <stop offset=".5" stop-color="#05090B" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#05090B" stop-opacity=".9"/>
+      </linearGradient>
+      <filter id="fog" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.0022 0.0055" numOctaves="4" seed="11"/>
+        <feColorMatrix values="0 0 0 0 0.16  0 0 0 0 0.36  0 0 0 0 0.38  0 0 0 1.25 -0.42"/>
+      </filter>
+      <linearGradient id="fogBand" x1="0" x2="0" y1="0" y2="1">
+        <stop offset=".25" stop-color="#fff" stop-opacity="0"/>
+        <stop offset=".55" stop-color="#fff" stop-opacity=".9"/>
+        <stop offset=".70" stop-color="#fff" stop-opacity="1"/>
+        <stop offset=".80" stop-color="#fff" stop-opacity=".2"/>
+        <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+      </linearGradient>
+      <radialGradient id="fogHole" cx="50%" cy="66%" r="22%">
+        <stop offset="0" stop-color="#000"/>
+        <stop offset="1" stop-color="#fff"/>
+      </radialGradient>
+      <mask id="fogMask"><rect x="-60" y="-60" width="1920" height="2820" fill="url(#fogBand)"/></mask>
+      <filter id="glow" filterUnits="userSpaceOnUse" x="400" y="850" width="1000" height="1250">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="34" result="b1"/>
+        <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="b2"/>
+        <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b3"/>
+        <feMerge><feMergeNode in="b1"/><feMergeNode in="b1"/><feMergeNode in="b2"/><feMergeNode in="b3"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="lineGlow" x="-10%" y="-200%" width="120%" height="500%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="b1"/>
+        <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="b2"/>
+        <feMerge><feMergeNode in="b1"/><feMergeNode in="b2"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="dotGlow" filterUnits="userSpaceOnUse" x="700" y="1660" width="400" height="400"><feGaussianBlur in="SourceGraphic" stdDeviation="22" result="a"/><feGaussianBlur in="SourceGraphic" stdDeviation="6" result="b"/><feMerge><feMergeNode in="a"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <filter id="soft"><feGaussianBlur stdDeviation="3"/></filter>
+      <filter id="haze" x="-100%" y="-20%" width="300%" height="140%"><feGaussianBlur stdDeviation="22"/></filter>
+    
+      <radialGradient id="backSky" cx="40%" cy="38%" r="75%">
+        <stop offset="0" stop-color="#132A31"/>
+        <stop offset=".5" stop-color="#0B171B"/>
+        <stop offset="1" stop-color="#060C0E"/>
+      </radialGradient>
+      <linearGradient id="carry" x1="1677.5" x2="1957.5" y1="0" y2="0" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#5FE3B0" stop-opacity="0"/>
+        <stop offset="1" stop-color="#5FE3B0" stop-opacity=".55"/>
+      </linearGradient>
+      <linearGradient id="backFogBand" x1="0" x2="0" y1="0" y2="1">
+        <stop offset=".35" stop-color="#fff" stop-opacity="0"/>
+        <stop offset=".62" stop-color="#fff" stop-opacity=".8"/>
+        <stop offset=".75" stop-color="#fff" stop-opacity=".9"/>
+        <stop offset="1" stop-color="#fff" stop-opacity=".3"/>
+      </linearGradient>
+      <mask id="backFogMask"><rect x="0" y="0" width="1959.5" height="2775.0" fill="url(#backFogBand)"/></mask>
+      <filter id="carryGlow" filterUnits="userSpaceOnUse" x="0" y="1817.5" width="3795.0" height="160">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="a"/>
+        <feMerge><feMergeNode in="a"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="backFog" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.0024 0.006" numOctaves="4" seed="4"/>
+        <feColorMatrix values="0 0 0 0 0.16  0 0 0 0 0.36  0 0 0 0 0.38  0 0 0 1.1 -0.5"/>
+      </filter>
+    </defs>
+
+    <!-- back and spine -->
+    <rect x="0" y="0" width="1959.5" height="2775.0" fill="url(#backSky)"/>
+    <rect x="0" y="0" width="1959.5" height="2775.0" filter="url(#backFog)" mask="url(#backFogMask)" opacity=".6"/>
+    <g><circle cx="303" cy="1914" r="6" fill="#FF5468" opacity="0.26"/><circle cx="1550" cy="2746" r="3.5" fill="#FF5468" opacity="0.47"/><circle cx="942" cy="1402" r="2.5" fill="#FF5468" opacity="0.47"/><circle cx="26" cy="2588" r="3.5" fill="#FF5468" opacity="0.18"/><circle cx="1459" cy="645" r="2.5" fill="#FF5468" opacity="0.43"/><circle cx="803" cy="2762" r="3.5" fill="#FF5468" opacity="0.40"/><circle cx="63" cy="913" r="3.5" fill="#FF5468" opacity="0.43"/><circle cx="1192" cy="2603" r="2" fill="#FF5468" opacity="0.21"/><circle cx="1502" cy="347" r="2" fill="#FF5468" opacity="0.33"/><circle cx="1014" cy="952" r="3.5" fill="#FF5468" opacity="0.21"/><circle cx="1222" cy="1304" r="2.5" fill="#FF5468" opacity="0.18"/><circle cx="363" cy="1870" r="6" fill="#FF5468" opacity="0.45"/><circle cx="1402" cy="1612" r="6" fill="#FF5468" opacity="0.18"/><circle cx="1029" cy="1551" r="3.5" fill="#FF5468" opacity="0.23"/><circle cx="1696" cy="2463" r="3.5" fill="#FF5468" opacity="0.27"/><circle cx="1754" cy="1391" r="3" fill="#FF5468" opacity="0.55"/><circle cx="710" cy="74" r="2" fill="#FF5468" opacity="0.21"/><circle cx="1316" cy="2726" r="2" fill="#FF5468" opacity="0.35"/><circle cx="1011" cy="2076" r="2.5" fill="#FF5468" opacity="0.38"/><circle cx="586" cy="2719" r="2" fill="#FF5468" opacity="0.22"/><circle cx="313" cy="966" r="3" fill="#FF5468" opacity="0.29"/><circle cx="1097" cy="851" r="2" fill="#FF5468" opacity="0.22"/><circle cx="1696" cy="483" r="3.5" fill="#FF5468" opacity="0.30"/><circle cx="1256" cy="1876" r="6" fill="#FF5468" opacity="0.53"/><circle cx="748" cy="2745" r="6" fill="#FF5468" opacity="0.39"/><circle cx="1623" cy="1362" r="3.5" fill="#FF5468" opacity="0.42"/><circle cx="1720" cy="682" r="4" fill="#FF5468" opacity="0.18"/><circle cx="1480" cy="2148" r="3.5" fill="#FF5468" opacity="0.17"/><circle cx="529" cy="2368" r="6" fill="#FF5468" opacity="0.27"/><circle cx="771" cy="473" r="2" fill="#FF5468" opacity="0.50"/><circle cx="1186" cy="405" r="2.5" fill="#FF5468" opacity="0.45"/><circle cx="880" cy="700" r="6" fill="#FF5468" opacity="0.36"/><circle cx="1339" cy="79" r="2.5" fill="#FF5468" opacity="0.51"/><circle cx="672" cy="427" r="3" fill="#FF5468" opacity="0.39"/><circle cx="783" cy="1613" r="3.5" fill="#FF5468" opacity="0.27"/><circle cx="982" cy="766" r="6" fill="#FF5468" opacity="0.15"/><circle cx="1259" cy="2647" r="2" fill="#FF5468" opacity="0.26"/><circle cx="599" cy="693" r="4" fill="#FF5468" opacity="0.32"/><circle cx="1255" cy="2086" r="2.5" fill="#FF5468" opacity="0.20"/><circle cx="174" cy="261" r="2" fill="#FF5468" opacity="0.41"/><circle cx="1445" cy="199" r="2" fill="#FF5468" opacity="0.41"/><circle cx="232" cy="1495" r="3" fill="#FF5468" opacity="0.31"/><circle cx="1632" cy="1724" r="2.5" fill="#FF5468" opacity="0.22"/><circle cx="694" cy="1970" r="4" fill="#FF5468" opacity="0.45"/><circle cx="1110" cy="1401" r="6" fill="#FF5468" opacity="0.46"/><circle cx="1453" cy="22" r="3.5" fill="#FF5468" opacity="0.50"/><circle cx="731" cy="1573" r="6" fill="#FF5468" opacity="0.24"/><circle cx="1771" cy="1679" r="6" fill="#FF5468" opacity="0.17"/><circle cx="715" cy="859" r="3" fill="#FF5468" opacity="0.48"/><circle cx="1476" cy="1360" r="4" fill="#FF5468" opacity="0.19"/><circle cx="1105" cy="1410" r="6" fill="#FF5468" opacity="0.28"/><circle cx="950" cy="809" r="4" fill="#FF5468" opacity="0.36"/><circle cx="1030" cy="177" r="3" fill="#FF5468" opacity="0.54"/><circle cx="653" cy="883" r="3.5" fill="#FF5468" opacity="0.19"/><circle cx="140" cy="203" r="3.5" fill="#FF5468" opacity="0.35"/><circle cx="1740" cy="1887" r="6" fill="#FF5468" opacity="0.33"/><circle cx="951" cy="1081" r="3.5" fill="#FF5468" opacity="0.18"/><circle cx="46" cy="1836" r="2" fill="#FF5468" opacity="0.25"/><circle cx="1294" cy="2268" r="6" fill="#FF5468" opacity="0.32"/><circle cx="1466" cy="1107" r="3" fill="#FF5468" opacity="0.34"/></g>
+
+    <!-- front -->
+    <g transform="translate(1957.5 37.5)">
+      
+
+    <!-- sky and fog -->
+    <rect x="-60" y="-60" width="1920" height="2820" fill="url(#sky)"/>
+    <rect x="-60" y="-60" width="1920" height="2820" filter="url(#fog)" mask="url(#fogMask)" opacity=".85"/>
+    <ellipse cx="900" cy="1820" rx="760" ry="240" fill="url(#bloom)"/>
+    <ellipse cx="900" cy="1520" rx="360" ry="500" fill="url(#bloom)" opacity=".7"/>
+
+    <!-- floor -->
+    <g stroke="#E0384F" stroke-opacity=".22" stroke-width="2">
+      <line x1="900" y1="1860" x2="-1820" y2="2760"/>
+<line x1="900" y1="1860" x2="-1650" y2="2760"/>
+<line x1="900" y1="1860" x2="-1480" y2="2760"/>
+<line x1="900" y1="1860" x2="-1310" y2="2760"/>
+<line x1="900" y1="1860" x2="-1140" y2="2760"/>
+<line x1="900" y1="1860" x2="-970" y2="2760"/>
+<line x1="900" y1="1860" x2="-800" y2="2760"/>
+<line x1="900" y1="1860" x2="-630" y2="2760"/>
+<line x1="900" y1="1860" x2="-460" y2="2760"/>
+<line x1="900" y1="1860" x2="-290" y2="2760"/>
+<line x1="900" y1="1860" x2="-120" y2="2760"/>
+<line x1="900" y1="1860" x2="50" y2="2760"/>
+<line x1="900" y1="1860" x2="220" y2="2760"/>
+<line x1="900" y1="1860" x2="390" y2="2760"/>
+<line x1="900" y1="1860" x2="560" y2="2760"/>
+<line x1="900" y1="1860" x2="730" y2="2760"/>
+<line x1="900" y1="1860" x2="900" y2="2760"/>
+<line x1="900" y1="1860" x2="1070" y2="2760"/>
+<line x1="900" y1="1860" x2="1240" y2="2760"/>
+<line x1="900" y1="1860" x2="1410" y2="2760"/>
+<line x1="900" y1="1860" x2="1580" y2="2760"/>
+<line x1="900" y1="1860" x2="1750" y2="2760"/>
+<line x1="900" y1="1860" x2="1920" y2="2760"/>
+<line x1="900" y1="1860" x2="2090" y2="2760"/>
+<line x1="900" y1="1860" x2="2260" y2="2760"/>
+<line x1="900" y1="1860" x2="2430" y2="2760"/>
+<line x1="900" y1="1860" x2="2600" y2="2760"/>
+<line x1="900" y1="1860" x2="2770" y2="2760"/>
+<line x1="900" y1="1860" x2="2940" y2="2760"/>
+<line x1="900" y1="1860" x2="3110" y2="2760"/>
+<line x1="900" y1="1860" x2="3280" y2="2760"/>
+<line x1="900" y1="1860" x2="3450" y2="2760"/>
+<line x1="900" y1="1860" x2="3620" y2="2760"/>
+<line x1="0" y1="1868" x2="1800" y2="1868"/>
+<line x1="0" y1="1870" x2="1800" y2="1870"/>
+<line x1="0" y1="1873" x2="1800" y2="1873"/>
+<line x1="0" y1="1877" x2="1800" y2="1877"/>
+<line x1="0" y1="1881" x2="1800" y2="1881"/>
+<line x1="0" y1="1887" x2="1800" y2="1887"/>
+<line x1="0" y1="1895" x2="1800" y2="1895"/>
+<line x1="0" y1="1905" x2="1800" y2="1905"/>
+<line x1="0" y1="1918" x2="1800" y2="1918"/>
+<line x1="0" y1="1934" x2="1800" y2="1934"/>
+<line x1="0" y1="1954" x2="1800" y2="1954"/>
+<line x1="0" y1="1981" x2="1800" y2="1981"/>
+<line x1="0" y1="2015" x2="1800" y2="2015"/>
+<line x1="0" y1="2058" x2="1800" y2="2058"/>
+<line x1="0" y1="2114" x2="1800" y2="2114"/>
+<line x1="0" y1="2185" x2="1800" y2="2185"/>
+<line x1="0" y1="2275" x2="1800" y2="2275"/>
+<line x1="0" y1="2392" x2="1800" y2="2392"/>
+<line x1="0" y1="2541" x2="1800" y2="2541"/>
+    </g>
+    <rect x="-60" y="1860" width="1920" height="900" fill="url(#floorShade)"/>
+    <rect x="884" y="1860" width="32" height="640" fill="url(#reflect)" filter="url(#haze)"/>
+    <rect x="896" y="1860" width="8" height="560" fill="url(#reflect)"/>
+
+    <!-- particles -->
+    <g><circle cx="583" cy="994" r="2" fill="#FF5468" opacity="0.30"/>
+<circle cx="104" cy="1689" r="2" fill="#FF5468" opacity="0.31"/>
+<circle cx="753" cy="1169" r="7" fill="#FF5468" opacity="0.29" filter="url(#soft)"/>
+<circle cx="1018" cy="2548" r="2" fill="#FF5468" opacity="0.63"/>
+<circle cx="714" cy="2604" r="2" fill="#FF5468" opacity="0.61"/>
+<circle cx="240" cy="1517" r="2.5" fill="#FF5468" opacity="0.62"/>
+<circle cx="1008" cy="2030" r="2.5" fill="#FF5468" opacity="0.63"/>
+<circle cx="1150" cy="1426" r="2.5" fill="#FF5468" opacity="0.62"/>
+<circle cx="1114" cy="1668" r="7" fill="#FF5468" opacity="0.76" filter="url(#soft)"/>
+<circle cx="838" cy="2501" r="5" fill="#FF5468" opacity="0.44"/>
+<circle cx="1430" cy="2063" r="3.5" fill="#FF5468" opacity="0.30"/>
+<circle cx="540" cy="1665" r="5" fill="#FF5468" opacity="0.72"/>
+<circle cx="518" cy="2611" r="2.5" fill="#FF5468" opacity="0.58"/>
+<circle cx="297" cy="1367" r="9" fill="#FF5468" opacity="0.52" filter="url(#soft)"/>
+<circle cx="1732" cy="851" r="5" fill="#FF5468" opacity="0.47"/>
+<circle cx="630" cy="1669" r="9" fill="#FF5468" opacity="0.29" filter="url(#soft)"/>
+<circle cx="168" cy="1226" r="2.5" fill="#FF5468" opacity="0.29"/>
+<circle cx="1263" cy="1962" r="9" fill="#FF5468" opacity="0.43" filter="url(#soft)"/>
+<circle cx="694" cy="2004" r="2" fill="#FF5468" opacity="0.86"/>
+<circle cx="640" cy="1891" r="9" fill="#FF5468" opacity="0.29" filter="url(#soft)"/>
+<circle cx="1383" cy="952" r="3.5" fill="#FF5468" opacity="0.51"/>
+<circle cx="1650" cy="1668" r="3" fill="#FF5468" opacity="0.54"/>
+<circle cx="989" cy="2423" r="7" fill="#FF5468" opacity="0.81" filter="url(#soft)"/>
+<circle cx="501" cy="1510" r="5" fill="#FF5468" opacity="0.69"/>
+<circle cx="685" cy="1150" r="2.5" fill="#FF5468" opacity="0.36"/>
+<circle cx="418" cy="1155" r="9" fill="#FF5468" opacity="0.79" filter="url(#soft)"/>
+<circle cx="328" cy="1250" r="3" fill="#FF5468" opacity="0.52"/>
+<circle cx="665" cy="1804" r="3" fill="#FF5468" opacity="0.70"/>
+<circle cx="928" cy="1904" r="2" fill="#FF5468" opacity="0.55"/>
+<circle cx="1568" cy="2556" r="7" fill="#FF5468" opacity="0.51" filter="url(#soft)"/>
+<circle cx="709" cy="1639" r="7" fill="#FF5468" opacity="0.29" filter="url(#soft)"/>
+<circle cx="121" cy="1107" r="3" fill="#FF5468" opacity="0.32"/>
+<circle cx="1081" cy="900" r="3" fill="#FF5468" opacity="0.60"/>
+<circle cx="1708" cy="1897" r="2.5" fill="#FF5468" opacity="0.82"/>
+<circle cx="1105" cy="990" r="4" fill="#FF5468" opacity="0.87"/>
+<circle cx="1084" cy="1625" r="2.5" fill="#FF5468" opacity="0.80"/>
+<circle cx="1788" cy="1609" r="9" fill="#FF5468" opacity="0.45" filter="url(#soft)"/>
+<circle cx="259" cy="2162" r="4" fill="#FF5468" opacity="0.56"/>
+<circle cx="1246" cy="1707" r="3.5" fill="#FF5468" opacity="0.87"/>
+<circle cx="951" cy="2608" r="2.5" fill="#FF5468" opacity="0.70"/>
+<circle cx="470" cy="1415" r="3" fill="#FF5468" opacity="0.48"/>
+<circle cx="401" cy="1756" r="5" fill="#FF5468" opacity="0.66"/>
+<circle cx="1104" cy="2237" r="3.5" fill="#FF5468" opacity="0.77"/>
+<circle cx="1473" cy="2143" r="3.5" fill="#FF5468" opacity="0.38"/>
+<circle cx="887" cy="2125" r="2" fill="#FF5468" opacity="0.76"/>
+<circle cx="1089" cy="1371" r="5" fill="#FF5468" opacity="0.87"/>
+<circle cx="656" cy="1130" r="3.5" fill="#FF5468" opacity="0.56"/>
+<circle cx="608" cy="1641" r="2" fill="#FF5468" opacity="0.56"/>
+<circle cx="1175" cy="2259" r="2.5" fill="#FF5468" opacity="0.79"/>
+<circle cx="216" cy="1458" r="3.5" fill="#FF5468" opacity="0.56"/>
+<circle cx="321" cy="2239" r="5" fill="#FF5468" opacity="0.31"/>
+<circle cx="1703" cy="2108" r="9" fill="#FF5468" opacity="0.51" filter="url(#soft)"/>
+<circle cx="1704" cy="2113" r="3" fill="#FF5468" opacity="0.90"/>
+<circle cx="50" cy="1852" r="9" fill="#FF5468" opacity="0.77" filter="url(#soft)"/>
+<circle cx="263" cy="2312" r="9" fill="#FF5468" opacity="0.68" filter="url(#soft)"/>
+<circle cx="631" cy="1770" r="3" fill="#FF5468" opacity="0.26"/>
+<circle cx="1439" cy="2116" r="2.5" fill="#FF5468" opacity="0.59"/>
+<circle cx="1681" cy="1546" r="3.5" fill="#FF5468" opacity="0.79"/>
+<circle cx="380" cy="1191" r="4" fill="#FF5468" opacity="0.58"/>
+<circle cx="1375" cy="1336" r="7" fill="#FF5468" opacity="0.79" filter="url(#soft)"/>
+<circle cx="110" cy="2143" r="9" fill="#FF5468" opacity="0.68" filter="url(#soft)"/>
+<circle cx="1467" cy="1708" r="3" fill="#FF5468" opacity="0.60"/>
+<circle cx="792" cy="1057" r="2" fill="#FF5468" opacity="0.75"/>
+<circle cx="270" cy="976" r="2.5" fill="#FF5468" opacity="0.61"/>
+<circle cx="587" cy="1711" r="9" fill="#FF5468" opacity="0.76" filter="url(#soft)"/>
+<circle cx="191" cy="1793" r="3.5" fill="#FF5468" opacity="0.37"/>
+<circle cx="76" cy="891" r="9" fill="#FF5468" opacity="0.62" filter="url(#soft)"/>
+<circle cx="1368" cy="2479" r="9" fill="#FF5468" opacity="0.46" filter="url(#soft)"/>
+<circle cx="1752" cy="1882" r="3.5" fill="#FF5468" opacity="0.70"/>
+<circle cx="814" cy="1740" r="9" fill="#FF5468" opacity="0.58" filter="url(#soft)"/>
+<circle cx="446" cy="1720" r="4" fill="#FF5468" opacity="0.85"/>
+<circle cx="1607" cy="1095" r="9" fill="#FF5468" opacity="0.34" filter="url(#soft)"/>
+<circle cx="219" cy="1562" r="2.5" fill="#FF5468" opacity="0.69"/>
+<circle cx="771" cy="1115" r="4" fill="#FF5468" opacity="0.76"/>
+<circle cx="1615" cy="1001" r="5" fill="#FF5468" opacity="0.34"/>
+<circle cx="1589" cy="2587" r="3.5" fill="#FF5468" opacity="0.74"/>
+<circle cx="169" cy="2426" r="3" fill="#FF5468" opacity="0.89"/>
+<circle cx="1498" cy="1015" r="7" fill="#FF5468" opacity="0.90" filter="url(#soft)"/>
+<circle cx="727" cy="1521" r="5" fill="#FF5468" opacity="0.46"/>
+<circle cx="1300" cy="738" r="9" fill="#FF5468" opacity="0.54" filter="url(#soft)"/>
+<circle cx="33" cy="1346" r="4" fill="#FF5468" opacity="0.58"/>
+<circle cx="116" cy="2621" r="3.5" fill="#FF5468" opacity="0.88"/>
+<circle cx="189" cy="1218" r="2" fill="#FF5468" opacity="0.84"/>
+<circle cx="327" cy="2174" r="7" fill="#FF5468" opacity="0.80" filter="url(#soft)"/>
+<circle cx="1217" cy="2545" r="7" fill="#FF5468" opacity="0.35" filter="url(#soft)"/></g>
+
+    <!-- the heartbeat comes in from both sides and stands up as the cross -->
+    <g fill="none" stroke-linejoin="round" stroke-linecap="round" filter="url(#lineGlow)">
+      <path d="M-20,1860 L218,1860 Q228,1850 239,1860 L252,1860 L257,1870 L264,1776 L271,1884 L277,1860 L302,1860 Q320,1845 337,1860 L500,1860 Q515,1846 530,1860 L548,1860 L556,1874 L566,1740 L576,1894 L584,1860 L620,1860 Q645,1838 670,1860 L900,1860" stroke="url(#beatL)" stroke-width="6"/>
+      <path d="M1820,1860  L1582,1860  Q1572,1850 1561,1860  L1548,1860  L1543,1870  L1536,1776  L1529,1884  L1523,1860  L1498,1860  Q1480,1845 1463,1860  L1300,1860  Q1285,1846 1270,1860  L1252,1860  L1244,1874  L1234,1740  L1224,1894  L1216,1860  L1180,1860  Q1155,1838 1130,1860  L900,1860" stroke="url(#beatR)" stroke-width="6"/>
+    </g>
+    <g filter="url(#glow)" stroke-linecap="round">
+      <path d="M900,1110 V1860 M680,1340 H1120" fill="none" stroke="#FF4A5E" stroke-width="16"/>
+      <path d="M900,1112 V1860 M682,1340 H1118" fill="none" stroke="#FFE3DC" stroke-width="5"/>
+    </g>
+    <circle cx="900" cy="1860" r="10" fill="#FFF1EC" filter="url(#dotGlow)"/>
+  
+    </g>
+    <!-- spine panel, so the fold lines up with a clean edge -->
+    <rect x="1837.5" y="0" width="120.0" height="2775.0" fill="#091215"/>
+    <!-- the heartbeat carries across the spine and fades out on the back -->
+    <rect x="1677.5" y="1895.0" width="290.0" height="5" fill="url(#carry)" filter="url(#carryGlow)"/>
+  </svg>
+
+  <div class="back">
+    <p class="cat">RELIGION / CHRISTIAN MINISTRY / PASTORAL RESOURCES</p>
+    <h2>Every church takes on the pulse <em>of the one who leads it.</em></h2>
+    <div class="blurb">
+      <p>When a church is struggling, we usually treat the church. Attendance dips, so we change the service. Volunteers wear out, so we recruit harder. The symptoms ease for a season and then come right back, because the trouble started somewhere else.</p>
+      <p>Vital Signs starts with the leader. Mark Merrill traces how a pastor is formed and how that formation, healthy or not, shows up in the life of a congregation. Then he lays out a way back to health that begins in the leader&rsquo;s own soul and moves outward into the church.</p>
+      <p class="close">For pastors who are tired of treating symptoms, and for the elders and boards who want to help them get well.</p>
+    </div>
+    <div class="rule"></div>
+    <div class="photo" role="img" aria-label="Mark Merrill"></div>
+    <p class="bio"><b>MARK MERRILL, DMin</b><br>is the founder of Vitals, a ministry platform built to keep a church&rsquo;s heartbeat steady from one Sunday to the next. He has served in pastoral ministry for <span class="fill">[__ years]</span> and lives in <span class="fill">[city, state]</span> with <span class="fill">[family]</span>.</p>
+    <div class="barcode"></div>
+  </div>
+
+  <div class="spine">
+    <div class="t">VITAL SIGNS</div>
+    <div class="a">MERRILL</div>
+    <svg width="40" height="80" viewBox="-20 -40 40 80"><g stroke="#FF4A5E" stroke-width="6" stroke-linecap="round" filter="url(#lineGlow)"><path d="M0,-36 V36 M-18,-14 H18" fill="none"/></g></svg>
+  </div>
+
+  <div class="front">
+    <div class="type">
+    <h1 class="title">VITAL<br>SIGNS</h1>
+    <div class="rule"></div>
+    <p class="subtitle">From the Making of the Leader<br>to the Healing of the Church</p>
+    <p class="diagnosis">The health of the leader and the health<br>of the church are the same diagnosis.</p>
+    <p class="author">MARK MERRILL<span>, DMin</span></p>
+  </div>
+  </div>
+
+  <div class="guides">
+    <div class="g-trim"></div>
+    <div class="g-fold" style="left:1837.5px"></div>
+    <div class="g-fold" style="left:1957.5px"></div>
+    <div class="g-safe" style="left:112.5px; top:112.5px; width:1650.0px; height:2550.0px"></div>
+    <div class="g-safe" style="left:2032.5px; top:112.5px; width:1650.0px; height:2550.0px"></div>
+    <div class="g-label" style="top:2242.5px; left:1162.5px">ISBN BARCODE 2 x 1.2 in</div>
+    <div class="g-label" style="left:57.5px; top:57.5px">BACK 6 x 9 | TRIM (blue) | SAFE 0.25 in (yellow) | BLEED 0.125 in</div>
+    <div class="g-label" style="left:1977.5px; top:57.5px">FRONT | SPINE 0.4 in (160 pp)</div>
+  </div>
+</div>
+</body>
+</html>
