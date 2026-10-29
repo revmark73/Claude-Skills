@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Vital Signs Cover</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Schibsted+Grotesk:wght@800;900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=block">
+<style>
+  :root {
+    --night:#0A1316;
+    --ink:#ECF1EF;
+    --ink-soft:#A9B9B6;
+    --accent:#F05A70;
+    --trace:#5FE3B0;
+  }
+  html, body { margin:0; padding:0; background:var(--night); }
+  .cover {
+    position:relative; width:1800px; height:2700px; overflow:hidden;
+    background:var(--night);
+  }
+  .cover svg.world { position:absolute; inset:0; }
+  .type { position:absolute; inset:0; text-align:center; color:var(--ink); }
+  .title {
+    position:absolute; left:0; right:0; top:170px;
+    font-family:"Schibsted Grotesk", sans-serif; font-weight:900;
+    font-size:280px; line-height:.88; letter-spacing:.01em; margin:0;
+    text-shadow:0 0 60px rgba(240,90,112,.18);
+  }
+  .rule {
+    position:absolute; left:50%; top:705px; width:120px; height:4px; margin-left:-60px;
+    background:var(--accent); border-radius:2px;
+    box-shadow:0 0 18px rgba(240,90,112,.7);
+  }
+  .subtitle {
+    position:absolute; left:150px; right:150px; top:750px; margin:0;
+    font-family:"Source Serif 4", serif; font-style:italic; font-weight:400;
+    font-size:68px; line-height:1.22; color:var(--ink);
+  }
+  .diagnosis {
+    position:absolute; left:120px; right:120px; top:2080px; margin:0;
+    font-family:"Source Serif 4", serif; font-weight:400;
+    font-size:54px; line-height:1.36; color:#C3D0CD;
+  }
+  .diagnosis::before, .diagnosis::after { color:var(--accent); }
+  .diagnosis::before { content:"\201C"; }
+  .diagnosis::after { content:"\201D"; }
+  .author {
+    position:absolute; left:0; right:0; top:2440px; margin:0;
+    font-family:"Schibsted Grotesk", sans-serif; font-weight:800;
+    font-size:84px; letter-spacing:.12em; color:var(--ink);
+  }
+  .author span {
+    font-family:"Source Serif 4", serif; font-weight:400; font-style:italic;
+    letter-spacing:.02em; color:var(--ink-soft); font-size:70px;
+  }
+</style>
+</head>
+<body>
+<div class="cover">
+  <svg class="world" width="1800" height="2700" viewBox="0 0 1800 2700" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="sky" cx="50%" cy="66%" r="70%">
+        <stop offset="0" stop-color="#16303A"/>
+        <stop offset=".45" stop-color="#0D1C21"/>
+        <stop offset="1" stop-color="#060C0E"/>
+      </radialGradient>
+      <radialGradient id="bloom" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#FF4A5E" stop-opacity=".55"/>
+        <stop offset=".35" stop-color="#C21F3A" stop-opacity=".22"/>
+        <stop offset="1" stop-color="#C21F3A" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="beatL" x1="0" x2="900" y1="0" y2="0" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#5FE3B0" stop-opacity="0"/>
+        <stop offset=".18" stop-color="#5FE3B0" stop-opacity=".85"/>
+        <stop offset=".62" stop-color="#FF8A7A"/>
+        <stop offset="1" stop-color="#FF4A5E"/>
+      </linearGradient>
+      <linearGradient id="beatR" x1="1800" x2="900" y1="0" y2="0" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#5FE3B0" stop-opacity="0"/>
+        <stop offset=".18" stop-color="#5FE3B0" stop-opacity=".85"/>
+        <stop offset=".62" stop-color="#FF8A7A"/>
+        <stop offset="1" stop-color="#FF4A5E"/>
+      </linearGradient>
+      <linearGradient id="reflect" x1="0" x2="0" y1="1860" y2="2500" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#FF6A78" stop-opacity=".75"/>
+        <stop offset="1" stop-color="#FF6A78" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="floorShade" x1="0" x2="0" y1="1860" y2="2700" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#0A1417" stop-opacity="0"/>
+        <stop offset=".5" stop-color="#05090B" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#05090B" stop-opacity=".9"/>
+      </linearGradient>
+      <filter id="fog" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.0022 0.0055" numOctaves="4" seed="11"/>
+        <feColorMatrix values="0 0 0 0 0.16  0 0 0 0 0.36  0 0 0 0 0.38  0 0 0 1.25 -0.42"/>
+      </filter>
+      <linearGradient id="fogBand" x1="0" x2="0" y1="0" y2="1">
+        <stop offset=".25" stop-color="#fff" stop-opacity="0"/>
+        <stop offset=".55" stop-color="#fff" stop-opacity=".9"/>
+        <stop offset=".70" stop-color="#fff" stop-opacity="1"/>
+        <stop offset=".80" stop-color="#fff" stop-opacity=".2"/>
+        <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+      </linearGradient>
+      <radialGradient id="fogHole" cx="50%" cy="66%" r="22%">
+        <stop offset="0" stop-color="#000"/>
+        <stop offset="1" stop-color="#fff"/>
+      </radialGradient>
+      <mask id="fogMask"><rect width="1800" height="2700" fill="url(#fogBand)"/></mask>
+      <filter id="glow" filterUnits="userSpaceOnUse" x="400" y="850" width="1000" height="1250">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="34" result="b1"/>
+        <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="b2"/>
+        <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b3"/>
+        <feMerge><feMergeNode in="b1"/><feMergeNode in="b1"/><feMergeNode in="b2"/><feMergeNode in="b3"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="lineGlow" x="-10%" y="-200%" width="120%" height="500%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="b1"/>
+        <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="b2"/>
+        <feMerge><feMergeNode in="b1"/><feMergeNode in="b2"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="dotGlow" filterUnits="userSpaceOnUse" x="700" y="1660" width="400" height="400"><feGaussianBlur in="SourceGraphic" stdDeviation="22" result="a"/><feGaussianBlur in="SourceGraphic" stdDeviation="6" result="b"/><feMerge><feMergeNode in="a"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <filter id="soft"><feGaussianBlur stdDeviation="3"/></filter>
+      <filter id="haze" x="-100%" y="-20%" width="300%" height="140%"><feGaussianBlur stdDeviation="22"/></filter>
+    </defs>
+
+    <!-- sky and fog -->
+    <rect width="1800" height="2700" fill="url(#sky)"/>
+    <rect width="1800" height="2700" filter="url(#fog)" mask="url(#fogMask)" opacity=".85"/>
+    <ellipse cx="900" cy="1820" rx="760" ry="240" fill="url(#bloom)"/>
+    <ellipse cx="900" cy="1520" rx="360" ry="500" fill="url(#bloom)" opacity=".7"/>
+
+    <!-- floor -->
+    <g stroke="#E0384F" stroke-opacity=".22" stroke-width="2">
+      __GRID__
+    </g>
+    <rect x="0" y="1860" width="1800" height="840" fill="url(#floorShade)"/>
+    <rect x="884" y="1860" width="32" height="640" fill="url(#reflect)" filter="url(#haze)"/>
+    <rect x="896" y="1860" width="8" height="560" fill="url(#reflect)"/>
+
+    <!-- particles -->
+    <g>__PARTS__</g>
+
+    <!-- the heartbeat comes in from both sides and stands up as the cross -->
+    <g fill="none" stroke-linejoin="round" stroke-linecap="round" filter="url(#lineGlow)">
+      <path d="__LEFT__" stroke="url(#beatL)" stroke-width="6"/>
+      <path d="__RIGHT__" stroke="url(#beatR)" stroke-width="6"/>
+    </g>
+    <g filter="url(#glow)" stroke-linecap="round">
+      <path d="M900,1110 V1860 M680,1340 H1120" fill="none" stroke="#FF4A5E" stroke-width="16"/>
+      <path d="M900,1112 V1860 M682,1340 H1118" fill="none" stroke="#FFE3DC" stroke-width="5"/>
+    </g>
+    <circle cx="900" cy="1860" r="10" fill="#FFF1EC" filter="url(#dotGlow)"/>
+  </svg>
+
+  <div class="type">
+    <h1 class="title">VITAL<br>SIGNS</h1>
+    <div class="rule"></div>
+    <p class="subtitle">From the Making of the Leader<br>to the Healing of the Church</p>
+    <p class="diagnosis">The health of the leader and the health<br>of the church are the same diagnosis.</p>
+    <p class="author">MARK MERRILL<span>, DMin</span></p>
+  </div>
+</div>
+</body>
+</html>
