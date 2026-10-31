@@ -46,3 +46,6 @@ The page code for the scroll film and parallax stills is already in index.html a
 
 ## Done 2026-09-26
 Assets processed into vitals-landing/assets (hero.mp4 H.264 and hero.webm VP9 fallback, both with a keyframe every 4 frames; start and end stills; three section stills at 1920 wide). Raw uploads moved to vitals-review/ (git-ignored). Page published as version 6 of the artifact with all assets passed through `files`.
+
+## Update: heart film is live
+The hero now plays Mark's uploaded film (`assets/Vitals_LandningPageAI.mp4`, the heartbeat that draws a heart with a cross). It was re-encoded to `hero.mp4` and `hero.webm` (1600 wide, keyframe every 6 frames) with new `hero-start.jpg` and `hero-end.jpg`. The flashing pulse and the closing zoom are pinned to the heart's spot in the film (`--hx` and `--hy` on `.film-stage`, about 27% across and 45% down), and the math accounts for the film being cropped to fill the screen.
